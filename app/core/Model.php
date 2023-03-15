@@ -9,18 +9,32 @@ trait Model {
         $query = "select * from $this->table limit $this->limit offset $this->offset";
         return $this->query($query,$data);
     }
+    
     public function where($data,$data_not=[]){
         $keys = array_keys($data);
         $keys_not = array_keys($data);
         $query = "select * from $this->table where ";
 
         foreach ($keys as $key) {
-            $query .=$key . " = :". $key . " && ";
+		print_r(count($keys));
+		if (count($keys) ==1) {
+ 			$query .=$key . " = :". $key;
+                	break;
+            }
+           else {
+		   print_r("two".$query);
+               $query .=$key . " = :". $key . " && ";
+            }
         }
         foreach ($keys_not as $key) {
-            $query .=$key . " = :". $key . " && ";
+	if (count($keys_not) >1) {
+				$query .=$key . " = :". $key . " && ";
+		}
+            
         }
-        $query =trim($query," && ");
+	  if(count($keys) !=1){
+		 $query =trim($query," && ");
+	}
         $query .=" limit $this->limit offset $this->offset";
         $data = array_merge($data,$data_not);
         return $this->query($query,$data);

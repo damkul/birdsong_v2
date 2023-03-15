@@ -28,6 +28,7 @@ class App
                 $this->method = $URL[2];
             }
         }
-        call_user_func_array([$controller,$this->method],[]);
+        $data = (!empty($URL[3])) ? $URL[3] : [] ;
+        call_user_func_array([$controller,$this->method],[ $data ]);
     } 
 }

@@ -11,9 +11,6 @@ class Home extends Controller
    //$arr['blogName'] = 'testing complete flow';
       //$blog->insert($arr);
       //$result =  $model->update(81,$arr,'blogId');// actual id and name of id column from table
-      
-      
-      print_r($result);
       $this->view('home');
    }
    public function edit(){

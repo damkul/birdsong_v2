@@ -19,11 +19,6 @@ class Blog {
         print_r($result);
         $this->view('home');
      }
-     public function edit(){
-        print_r("edit function");
-        $this->view('home');
-     }
-  
      public function getEditBlog($id){
         $blog['blogId'] = $id;
         $result = $this->where($blog);

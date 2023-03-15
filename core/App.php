@@ -12,7 +12,6 @@ class App
     public function loadController(){
         $URL = $this->splitURL();
         $filename= "./app/controllers/".ucfirst($URL[1]).".php";
-        
         if (file_exists($filename)) {
             require $filename;
             $this->controller = ucfirst($URL[1]);
@@ -22,15 +21,13 @@ class App
             $this->controller = "_404";
         }
         $controller = new $this->controller;
-        print_r($URL);
+
         //select method
         if (!empty($URL[2])) {
             if (method_exists($controller,$URL[2])) {
                 $this->method = $URL[2];
             }
         }
-        print_r($this->method);
-        $data = (!empty($URL[3])) ? $URL[3] : [] ;
-        call_user_func_array([$controller,$this->method],[$data]);
+        call_user_func_array([$controller,$this->method],[]);
     } 
 }

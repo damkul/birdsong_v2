@@ -12,7 +12,7 @@ trait Database
         $stm = $con->prepare($query);
         $check = $stm->execute($data);
         if ($check) {
-           $result = $stm->fetchAll();
+           $result = $stm->fetchAll(PDO::FETCH_OBJ);
            if (is_array($result) && count($result)) {
                 return $result;
            }
@@ -26,6 +26,7 @@ trait Database
         $stm = $con->prepare($query);
         $check = $stm->execute($data);
         if ($check) {
+          // $result = $stm->fetchAll(PDO::FETCH_OBJ);
            $result = $stm->fetchAll();
            if (is_array($result) && count($result)) {
                 return $result[0];

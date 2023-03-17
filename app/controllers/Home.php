@@ -3,50 +3,34 @@
 class Home extends Controller
 {
    use Model;
-   protected $table = 'blog';
    public function index(){
-      // call all model functions from here
-    //  $blog = new Blog;
-   //   $result =  $model->delete(80,'blogId');// actual id and name of id column from table
-   //$arr['blogName'] = 'testing complete flow';
-      //$blog->insert($arr);
-      //$result =  $model->update(81,$arr,'blogId');// actual id and name of id column from table
+      $result = $this->getHomePageData();
       $this->view('home');
    }
-   public function edit(){
-      print_r("edit function");
-      $this->view('home');
+   public function getHomePageData(){
+      $query = [];
+      $query['getEvents'] = "select eventName,eventDescription from birdsong.event LIMIT 4;";
+      $query['getObservations'] = "SELECT obs.obsid,Min(img.imageId) imageId,img.imageName,Min(snd.soundId) soundId,snd.soundName,birdName,scientificName,marathiName,description,dateOfObs FROM 
+      birdsong.observation obs
+      left join images img on obs.obsId = img.obsId 
+      left join sound snd on obs.obsId = snd.obsId
+      group by img.obsId, snd.obsId LIMIT 4;";
+      $query['getBlogs'] = "select blogName,blogContent from birdsong.blog LIMIT 4;";
+      $query['getProjects'] = "select title,description,imageName from birdsong.project LIMIT 4;";
+      $query['getSponserships'] = "SELECT advName,imageName FROM birdsong.sponsership;";
+      
+     return $result = $this->executeCustomQuery($query);
    }
-
-   public function getEditBlog($id){
-      $blog['blogId'] = $id;
-      $result = $this->where($blog);
-      $this->view('editBlog');
+   public function executeCustomQuery($query = []){
+      $result = [];
+      $cnt = 0;
+      foreach ($query as $key) {
+         $res = $this->customQuery($key);
+         $temp = [];
+         $temp[$cnt] = $res;
+         array_push($result,$temp);
+         $cnt++;
+      }
+      return $result;
    }
-   //Final method
-   // public function postEditBlog($id,$data){
-   //    $blog['blogId'] = $id;
-   //    $this->update($id,$data,'blogId');
-   // }
-   //test method
-   public function postEditBlog($id,$data){
-      $blog['blogId'] = $id;
-      $data['blogName']='final';
-      $this->update($id,$data,'blogId');
-   }
-    public function getNewBlog(){
-      $this->view('newBlog');
-    }
-    public function postNewBlog(){
-      $data['blogName']='final testing';
-      $data['blogAuthor']='damini';
-      $data['blogContent']='damini is happy';
-      $this->insert($data);
-      $this->view('newBlog');
-    }
-    public function deleteBlog($id){
-      $blog['blogId'] = $id;
-      $result = $this->delete($blog,'blogId');
-      $this->view('blog');
-    }
 }

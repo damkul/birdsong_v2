@@ -87,5 +87,8 @@ trait Model {
         $this->query($query,$data);
         return false;
     }
-
+    public function customQuery($query){
+        $result = $this->query($query);
+        return $result;
+    }
 }

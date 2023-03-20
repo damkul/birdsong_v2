@@ -9,7 +9,7 @@ require 'config.php';
 require 'Database.php';
 require 'Model.php';
 require 'Controller.php';
-require 'functions.php';
+require 'Helper.php';
 require 'Style.php';
 require "App.php";
 // require './app/views/header.view.php';

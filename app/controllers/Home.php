@@ -3,9 +3,10 @@
 class Home extends Controller
 {
    use Model;
+   use Helper;
    public function index(){
       $result = $this->getHomePageData();
-      $this->view('home');
+      $this->view('home',$result);
    }
    public function getHomePageData(){
       $query = [];
@@ -21,16 +22,5 @@ class Home extends Controller
       
      return $result = $this->executeCustomQuery($query);
    }
-   public function executeCustomQuery($query = []){
-      $result = [];
-      $cnt = 0;
-      foreach ($query as $key) {
-         $res = $this->customQuery($key);
-         $temp = [];
-         $temp[$cnt] = $res;
-         array_push($result,$temp);
-         $cnt++;
-      }
-      return $result;
-   }
+   
 }

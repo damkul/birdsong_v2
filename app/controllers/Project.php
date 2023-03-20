@@ -13,7 +13,6 @@ class Project extends Controller{
      public function getEditProject($id){
         $project['projectId'] = $id;
         $result = $this->where($project);
-        print_r($result);
         $this->view('Project/editProject');
      }
      public function postEditProject($id){
@@ -37,7 +36,26 @@ class Project extends Controller{
       }
       public function getProgects(){
         $query = [];
-        $query['getAllBlogs'] = "select * from birdsong.project;";
-       return $result = $this->executeCustomQuery($query);
+        $res = [];
+        $previousProjects = [];
+        $ongoingProjects = [];
+        $query['getAllProjects'] = "select * from project;";
+        $result = $this->executeCustomQuery($query);
+        if (count($result) > 1) {
+          foreach ($result as $key) {
+            print_r($key->toDate);
+            if ($key->toDate >= date("Y-m-d H:i:s")) {
+              array_push($ongoingProjects,$key);
+            } else {
+              array_push($previousProjects,$key);
+            }
+            
+           }
+        }
+       // array_push($ongoingProjects,"ongoingProjects");
+       // array_push($previousProjects,"previousProjects");
+       $res['ongoingProjects'] = $ongoingProjects;
+        $res['previousProjects'] = $previousProjects;
+        return $res;
      }
 }

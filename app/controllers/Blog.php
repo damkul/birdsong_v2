@@ -7,8 +7,10 @@ class Blog extends Controller{
     protected $table = 'blog';
 
     public function index(){
-        $result = $this->getBlogData();
-        $this->view('Blog/blog');
+        $data = $this->getBlogData();
+       // print_r($data[0][0]);
+       
+        $this->view('Blog/blog',$data);
 
      }
      public function getEditBlog($id){
@@ -52,7 +54,8 @@ class Blog extends Controller{
         left join birdsong.blogimages bi on blog.blogId = bi.blogId
         left join birdsong.blogsounds bs on blog.blogId = bs.blogId
         order by blogName;";
-       return $result = $this->executeCustomQuery($query);
+       $result = $this->executeCustomQuery($query);
+       return $result;
      }
      
 }

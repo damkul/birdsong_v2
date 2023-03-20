@@ -8,54 +8,36 @@
             <h2 class="page-heading">All Projects</h2>
             <hr class="ruler">
         </div>
-        <% if (role>=0) { %>
-            <div class="new-project-container">
-                <button><a href="/projects/newProject">New Project</a></button>
-            </div>
-        <% } %>
-        
-        <div><%= error %> <%= success %></div>
         <div class="projects-container">
-            <% if(onGoingProjects.length > 0) { %> 
-
-                    <% onGoingProjects.forEach(project => { %>
-                        <% 
-                        if (project.imageName=='NULL') {
-                            project.imageName = 'logo_0.5.png';
-                        } 
-                        %>   
+            <?php if (count($data)>1): ?> 
+                
+                     <?php foreach ($data['ongoingProjects'] as $key): ?> 
                         <div class="prj">
                             <div class="img-cntr">
-                                <img src="<?php echo ROOT ?>/images/<%= project.imageName %>" alt="">
+                                <img src="<?php echo ROOT ?>/images/<?php echo $key->imageName ?>" alt="">
                             </div>
                             <div class="info-cntr">
-                                <h3><%= project.title %></h3>
-                                <% if ( project.description != 'NULL') { %>
-
-                                    <% var desc = project.description.substring(0,100); %> 
-
-                                <% } %>
-                                <p class="prj-desc"><%= desc %></p>
-                                <span><a href="<%= project.eBirdLink %>" class="ebird-link" target="_blank"><%= project.eBirdLink %> </a></span>
+                                <h3><?php echo $key->title ?></h3>
+                        
+                                <p class="prj-desc"><?php echo $key->description ?></p>
+                                <span><a href="<?php echo $key->eBirdLink ?>" class="ebird-link" target="_blank"><?php echo $key->eBirdLink ?> </a></span>
                                
                             </div>
-                            <% if (role>0) { %>
+                            <?php $role=1; if($role>0): ?>
                                 <div class="bottom">
-                                    <button class="btn"><a href="/projects/editProject/<%= project.projectId %> ">Edit</a></button>
-                                    <button class="btn"><a href="/projects/deleteProject/<%= project.projectId %>">Delete</a></button>
+                                    <button class="btn"><a href="/projects/editProject/<?php $key->projectId ?> ">Edit</a></button>
+                                    <button class="btn"><a href="/projects/deleteProject/<?php $key->projectId ?>">Delete</a></button>
                                 </div>
-                            <% } %>
-                            
+                            <?php endif; ?>
                         </div>
-                     
-                    <% }) %>
-
-            <% } %> 
-        </div>
+                     <?php endforeach;   ?> 
+            <?php endif;   ?> 
+			</div>
 
         <div class="page-heading-container">
             <h2 class="page-heading">Prviously Done Projects</h2>
             <hr class="ruler">
+
         </div>
         <div class="members-table-container">
             
@@ -66,20 +48,20 @@
                   <th>Organisation</th>
                   <th>Duration</th>
                 </tr>
-                <% if (previousProjects.length>0) { %>
+                <?php if (count($data['ongoingProjects'])>0): ?>
                  
-                    <% previousProjects.forEach(element => { %>
+                 <?php foreach($data['ongoingProjects'] as $key): ?>
 
-                        <tr>
-                            <td>1</td>
-                            <td><%= element.title%></td>
-                            <td><%= element.title%></td>
-                            <td><%= element.toDate%></td>
-                          </tr>
-                     
-                    <% }) %>
+                     <tr>
+                         <td>1</td>
+                         <td><?php echo $key->title ?></td>
+                         <td><?php echo $key->title ?></td>
+                         <td><?php echo $key->toDate ?></td>
+                       </tr>
+                  
+                 <?php endforeach; ?>
 
-                <% } %>
+             <?php endif ?>
               </table>
         </div>
     </div>

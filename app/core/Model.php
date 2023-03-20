@@ -16,7 +16,6 @@ trait Model {
         $query = "select * from $this->table where ";
 
         foreach ($keys as $key) {
-		print_r(count($keys));
 		if (count($keys) ==1) {
  			$query .=$key . " = :". $key;
                 	break;
@@ -88,7 +87,7 @@ trait Model {
         return false;
     }
     public function customQuery($query){
-        $result = $this->query($query);
-        return $result;
+         $result = $this->query($query);
+         return $result;
     }
 }

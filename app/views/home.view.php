@@ -8,5 +8,15 @@
     <title>Document</title>
 </head>
 <body>
+    
+    <?php 
+        foreach ($data as $keys ) {
+           
+           foreach ($keys as $key => $value) {
+            print_r("key: \n");
+            print_r($key->eventName);
+           }
+        }
+    ?>
 </body>
 </html>

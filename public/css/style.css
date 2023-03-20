@@ -1383,6 +1383,7 @@
   .projects-container .prj{
     width: 30%;
     border: 0.5px solid lightgray;
+    margin: 1rem;
   }
   .projects-container .prj .info-cntr h3{
    margin-bottom: 0.5rem;
@@ -2932,6 +2933,7 @@
   .projects-container .prj{
     width: 50%;
     border: 1px solid lightgray;
+    margin: 1rem;
   }
   .projects-container .prj .bottom{
     padding: 1rem;
@@ -3105,6 +3107,7 @@
   .projects-container .prj{
     width: 33%;
     border: 1px solid lightgray;
+    margin: 1rem;
   }
   .projects-container .prj .bottom{
     padding: 1rem;

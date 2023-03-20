@@ -39,7 +39,8 @@ class Sponsership extends Controller{
       }
       public function getSponserships(){
         $query = [];
-        $query['getAllBlogs'] = "select * from birdsong.project;";
-       return $result = $this->executeCustomQuery($query);
+        $query['getAllBlogs'] = "SELECT * FROM birdsong.sponsership where toDate >= CURDATE();";
+       $result = $this->executeCustomQuery($query);
+       return $result;
      }
 }

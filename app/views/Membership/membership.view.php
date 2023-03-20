@@ -86,20 +86,17 @@
                   <th>Profession</th>
                   <th>Package</th>
                 </tr>
-                <% if (members.length>0) { %>
+                <?php if (!empty($data)): ?>
                     
-                    <% members.forEach(element => { %>
+                    <?php foreach($data as $key): ?>
                         <tr>
                             <td>1</td>
-                            <td><%= element.memName%></td>
-                            <td><%= element.memOccupation%></td>
-                            <td><%= element.memType%></td>
+                            <td><?php echo $key->memName ?></td>
+                            <td><?php echo $key->memOccupation ?></td>
+                            <td><?php echo $key->memType ?></td>
                           </tr>
-                    <% }) %>
-
-                <% } %>
-                
-                
+                    <?php endforeach; ?>
+                <?php endif ?>
               </table>
         </div>
     </div>

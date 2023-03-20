@@ -2,11 +2,11 @@
 
 class Membership extends Controller{
     use Model;
+    use Helper;
     protected $table = 'membership';
 
     public function index(){
-      // TODO: Add code to get all blogs
-        $data['blogName'] = 'blo1';
+        $data =  $this->getExistingMembers();
         $this->view('Membership/membership',$data);
      }
      public function getEditMembership($id){
@@ -41,5 +41,10 @@ class Membership extends Controller{
         $blog['blogId'] = $id;
         $result = $this->where($blog);
         $this->view('Membership/readMembership',$result);
+      }
+      public function getExistingMembers(){
+        $query['getExistingMembers'] = "SELECT memId,memType,memOccupation,memName FROM membership";
+        $result = $this->executeCustomQuery($query);
+        return $result;
       }
 }

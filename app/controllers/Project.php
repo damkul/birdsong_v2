@@ -13,19 +13,23 @@ class Project extends Controller{
      public function getEditProject($id){
         $project['projectId'] = $id;
         $result = $this->where($project);
-        $this->view('Project/editProject');
+        $this->view('Project/editProject',$result);
      }
-     public function postEditProject($id){
-        $data['title']='final';
-        $this->update($id,$data,'projectId');
+     public function postEditProject(){
+        $project['projectId'] = $_POST['projectId'];
+        $this->update($project['projectId'],$_POST,'projectId');
+        $result = $this->where($project);
+        $this->view('Project/editProject',$result);
      }
       public function getNewProject(){
         $this->view('Project/newProject');
       }
       public function postNewProject(){
-        $data['title']='final testing';
-        $data['description']='damini';
-        $data['imageName']='damini is happy';
+        $data['title']=$_POST['title'];
+        $data['description']=$_POST['description'];
+        $data['eBirdLink']=$_POST['eBirdLink'];
+        $data['fromDate']=$_POST['fromDate'];
+        $data['toDate']=$_POST['toDate'];
         $this->insert($data);
         $this->view('Project/newProject');
       }

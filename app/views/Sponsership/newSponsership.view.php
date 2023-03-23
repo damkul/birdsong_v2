@@ -17,7 +17,7 @@
                   <%= error %>
                 </div>
               <% } %>
-            <form action="/sponsership/new" method="post" enctype="application/x-www-form-urlencoded">
+            <form action="postNewSponsership" method="post" enctype="application/x-www-form-urlencoded">
             <div class="input">
                 <label for="adv-name">Sponserer Name</label>
                 <input type="text" name="advName" id="adv-name" class="form-input">
@@ -25,11 +25,11 @@
             <div class="date-cntr">
                 <div class="input">
                     <label for="adv-date">From Date</label>
-                    <input type="date" name="advFromDate" id="adv-date" class="form-input">
+                    <input type="date" name="fromDate" id="fromDate" class="form-input">
                 </div>
                 <div class="input">
                     <label for="adv-date">To Date</label>
-                    <input type="date" name="advToDate" id="adv-date" class="form-input">
+                    <input type="date" name="toDate" id="toDate" class="form-input">
                 </div>
             </div>
             <div class="input">

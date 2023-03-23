@@ -14,21 +14,23 @@ class Sponsership extends Controller{
         $Sponsership['advId'] = $id;
         $result = $this->where($Sponsership);
         print_r($result);
-        $this->view('Sponsership/editSponsership');
+        $this->view('Sponsership/editSponsership',$result);
      }
-     public function postEditSponsership($id){
-      // TODO: get data from $_POST and pass 
-        $data['advName']='final';
-        $this->update($id,$data,'advId');
+     public function postEditSponsership(){
+        $sponsership['advId'] = $_POST['advId'];
+        $this->update($sponsership['advId'],$_POST,'advId');
+        $result = $this->where($sponsership);
+        $this->view('Sponsership/editSponsership',$result);
      }
       public function getNewSponsership(){
         $this->view('Sponsership/newSponsership');
       }
       public function postNewSponsership(){
-        // TODO: get data from $_POST and pass 
-        $data['advName']='final testing';
-        $data['websiteLink']='damini';
-        $data['imageName']='damini is happy';
+       
+        $data['advName']=$_POST['advName'];
+        $data['websiteLink']=$_POST['websiteLink'];
+        $data['fromDate']=$_POST['fromDate'];
+        $data['toDate']=$_POST['toDate'];
         $this->insert($data);
         $this->view('Sponsership/newSponsership');
       }

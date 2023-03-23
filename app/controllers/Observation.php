@@ -3,22 +3,22 @@
 class Observation extends Controller {
     use Model;
     use Helper;
-    protected $table = 'oservation';
+    protected $table = 'observation';
 
     public function index(){
       $data = $this->getObservations();
         $this->view('Observation/observation',$data);
      }
      public function getEditObservation($id){
-        $blog['blogId'] = $id;
-        $result = $this->where($blog);
-        print_r($result[0]);
+        $obs['obsId'] = $id;
+        $result = $this->where($obs);
         $this->view('Observation/editObservation',$result);
      }
-     public function postEditObservation($id){
-        $blog['blogId'] = $id;
+     public function postEditObservation(){
+      $obs['obsId'] = $_POST['obsId'];
         print_r($_POST);
-         $result = $this->update($id,$_POST,'blogId');
+        $this->update($obs['obsId'],$_POST,'obsId');
+        $result = $this->where($obs);
         $this->view('Observation/editObservation',$result);
      }
       public function getNewObservation(){
@@ -26,19 +26,21 @@ class Observation extends Controller {
       }
       public function postNewObservation(){
         print_r($_POST);
-        $data['blogName']=$_POST[blogName];
-        $data['blogAuthor']=$_POST[blogAuthor];
-        $data['blogContent']=$_POST[blogContent];
+        $data['birdName']=$_POST['birdName'];
+        $data['scientificName']=$_POST['scientificName'];
+        $data['marathiName']=$_POST['marathiName'];
+        $data['dateOfObs']=$_POST['dateOfObs'];
+        $data['description']=$_POST['description'];
         $this->insert($data);
         $this->view('Observation/newObservation');
       }
       public function deleteObservation($id){
-        $blog['blogId'] = $id;
+        $obs['obsId'] = $id;
         $result = $this->delete($blog,'blogId');
         $this->view('Observation/blog');
       }
       public function readObservation($id){
-        $blog['blogId'] = $id;
+        $obs['obsId'] = $id;
         $result = $this->where($blog);
         $this->view('Observation/observationDetail',$result);
       }

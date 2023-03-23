@@ -9,19 +9,20 @@
 </div>
     <div class="new-event-form-container">
         
-        <form action="postEditEvent" method="post" enctype="multipart/form-data">
+        <form action="../postEditEvent" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="eventId" value="<?php echo $data[0]->eventId ?>">
             <div class="modal-input-container">
                 <label for="">Event Name</label>
-                <input type="text" class="form-input newEventName" name="eventName" value="<%= event.eventName %> ">
+                <input type="text" class="form-input newEventName" name="eventName" value="<?php echo $data[0]->eventName ?> ">
             </div>
             <div class="modal-input-container">
                 <label for="">Event Registration Fee</label>
-                <input type="text" class="form-input newEventName" name="eventFee" value="<%= event.eventFee %> ">
+                <input type="text" class="form-input newEventName" name="eventFee" value="<?php echo $data[0]->eventFee ?> ">
             </div>
             <div class="date-container">
                 <div class="modal-input-container">
                     <label for="">Event Type</label>
-                    <input type="text" class="form-input newEventType" name="eventType" value="<%= event.eventType %> ">
+                    <input type="text" class="form-input newEventType" name="eventType" value="<?php echo $data[0]->eventType ?> ">
                 </div>
                 <div class="modal-input-container">
                     <label for="">From Date</label>
@@ -34,11 +35,11 @@
             </div>
             <div class="modal-input-container">
                 <label for="">Event Description</label>
-                <textarea name="description" id="" cols="30" rows="10" class="form-input"><%= event.eventDescription %></textarea>
+                <textarea name="eventDescription" id="" cols="30" rows="10" class="form-input"><?php echo $data[0]->eventDescription ?></textarea>
             </div>
             <div class="modal-input-container">
                 <label>Event Instructions</label>
-                <textarea name="instructions" id="" cols="30" rows="10" class="form-input"><%= event.eventInstruction %></textarea>
+                <textarea name="eventInstruction" id="" cols="30" rows="10" class="form-input"><?php echo $data[0]->eventInstruction ?></textarea>
             </div>
             <div class="modal-input-container">
                 <label>Add Images</label>
@@ -49,7 +50,7 @@
             </div>
             <div class="modal-input-container">
                 <label for="">Event Registration form Link</label>
-                <input type="text" class="form-input" name="googleFormLink" value="<%= event.googleFormLink %>" required>
+                <input type="text" class="form-input" name="googleFormLink" value="<?php echo $data[0]->googleFormLink ?>" required>
             </div>
             <div class="modal-input-container">
                 <button class="form-input new-evnt-Btn">Save Event</button>
@@ -66,6 +67,6 @@
                             return [ date.getFullYear(),mnth,day].join("-")
                             
                         }
-        document.getElementById('fromDate').defaultValue = formatDate('<%= event.fromDate %>')
-        document.getElementById('toDate').defaultValue = formatDate('<%= event.toDate %>')
+        document.getElementById('fromDate').defaultValue = formatDate('<?php echo $data[0]->fromDate ?>')
+        document.getElementById('toDate').defaultValue = formatDate('<?php echo $data[0]->toDate ?>')
     </script>

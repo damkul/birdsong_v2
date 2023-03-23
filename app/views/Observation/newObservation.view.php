@@ -19,7 +19,7 @@
                   <%= error %>
                 </div>
               <% } %>
-            <form action="../postNewObservation" method="post" enctype="multipart/form-data">
+            <form action="postNewObservation" method="post" enctype="multipart/form-data">
         
                 <div class="input-container">
                     <label for="">Bird Name</label>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="input-container">
                         <label for="">Date</label>
-                        <input type="Date" class="form-input" name="date" required>
+                        <input type="Date" class="form-input" name="dateOfObs" required>
                     </div>
                 </div>
                 <div class="input-container">

@@ -8,7 +8,7 @@
     <hr>
 </div>
     <div class="new-event-form-container">
-        <form action="../postNewEvent" method="post" enctype="multipart/form-data">
+        <form action="postNewEvent" method="post" enctype="multipart/form-data">
            
             <div class="modal-input-container">
                 <label for="">Event Name</label>
@@ -34,11 +34,11 @@
             </div>
             <div class="modal-input-container">
                 <label for="">Event Description</label>
-                <textarea name="description" id="" cols="30" rows="10" class="form-input" required></textarea>
+                <textarea name="eventDescription" id="" cols="30" rows="10" class="form-input" required></textarea>
             </div>
             <div class="modal-input-container">
                 <label>Event Instructions</label>
-                <textarea name="instructions" id="" cols="30" rows="10" class="form-input"></textarea>
+                <textarea name="eventInstruction" id="" cols="30" rows="10" class="form-input"></textarea>
             </div>
             <div class="modal-input-container">
                 <label>Add Images</label>

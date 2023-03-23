@@ -9,29 +9,29 @@
             <hr class="ruler">
         </div>
         <div class="obs-form-container">
-            <form action="postEditObservation" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="obsId" value="<%= obs.obsId %> ">
+            <form action="../postEditObservation" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="obsId" value="<?php echo $data[0]->obsId ?> ">
                 <div class="input-container">
                     <label for="">Bird Name</label>
-                    <input type="text" class="form-input" name="birdName" value="<%= obs.birdName %>">
+                    <input type="text" class="form-input" name="birdName" value="<?php echo $data[0]->birdName ?>">
                 </div>
                 <div class="addtional-info">
                     <div class="input-container">
                         <label for="">Scientific Name</label>
-                        <input type="text" class="form-input" name="scientificName" value="<%= obs.scientificName %> ">
+                        <input type="text" class="form-input" name="scientificName" value="<?php echo $data[0]->scientificName ?> ">
                     </div>
                     <div class="input-container">
                         <label for="">Marathi Name</label>
-                        <input type="text" class="form-input" name="marathiName" value="<%= obs.marathiName %> ">
+                        <input type="text" class="form-input" name="marathiName" value="<?php echo $data[0]->marathiName ?> ">
                     </div>
                     <div class="input-container">
                         <label for="">Date</label>
-                        <input type="Date" class="form-input" name="date" value="<%= obs.dateOfObs %>">
+                        <input type="Date" class="form-input" name="dateOfObs" value="<?php echo $data[0]->dateOfObs ?>">
                     </div>
                 </div>
                 <div class="input-container">
                     <label for="">Description</label>
-                    <textarea class="form-input" rows="10" cols="20" name="description"><%= obs.description %> </textarea>
+                    <textarea class="form-input" rows="10" cols="20" name="description"><?php echo $data[0]->description ?> </textarea>
                 </div>
                 <div class="input-container">
                     <label for="">Add Images</label>

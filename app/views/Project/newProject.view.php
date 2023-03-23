@@ -17,7 +17,7 @@
           <%= error %>
         </div>
       <% } %>
-        <form action="../postNewProject" method="post" enctype="multipart/form-data">
+        <form action="postNewProject" method="post" enctype="multipart/form-data">
         
               <div class="modal-input-container">
                 <label for="">Project Name</label>

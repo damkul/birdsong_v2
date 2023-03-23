@@ -16,20 +16,20 @@ class Blog extends Controller{
         $result = $this->where($blog);
         $this->view('Blog/editBlog',$result);
      }
-     public function postEditBlog($id){
-        $blog['blogId'] = $id;
+     public function postEditBlog(){
+         $blog['blogId'] = $_POST['blogId'];
         print_r($_POST);
-         $result = $this->update($id,$_POST,'blogId');
-        $this->view('Blog/editBlog',$result);
+         $result = $this->update($blog['blogId'],$_POST,'blogId');
+        // $this->view('Blog/editBlog',$result);
      }
       public function getNewBlog(){
         $this->view('Blog/newBlog');
       }
       public function postNewBlog(){
-        print_r($_POST);
-        $data['blogName']=$_POST[blogName];
-        $data['blogAuthor']=$_POST[blogAuthor];
-        $data['blogContent']=$_POST[blogContent];
+        $data['blogName']=$_POST['blogName'];
+        $data['blogAuthor']=$_POST['blogAuthor'];
+        $data['blogContent']=$_POST['blogContent'];
+        $data['date']=$_POST['blogDate'];
         $this->insert($data);
         $this->view('Blog/newBlog');
       }

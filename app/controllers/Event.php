@@ -11,15 +11,15 @@ class Event extends Controller
           $this->view('Event/event',$data);
        }
        public function getEditEvent($id){
-          $blog['blogId'] = $id;
-          $result = $this->where($blog);
+          $event['eventId'] = $id;
+          $result = $this->where($event);
           print_r($result[0]);
           $this->view('Event/editEvent',$result);
        }
-       public function postEditEvent($id){
-          $blog['blogId'] = $id;
-          print_r($_POST);
-           $result = $this->update($id,$_POST,'blogId');
+       public function postEditEvent(){
+          $event['eventId'] = $_POST['eventId'];
+           $this->update($event['eventId'],$_POST,'eventId');
+           $result = $this->where($event);
           $this->view('Event/editEvent',$result);
        }
         public function getNewEvent(){
@@ -27,9 +27,14 @@ class Event extends Controller
         }
         public function postNewEvent(){
           print_r($_POST);
-          $data['blogName']=$_POST[blogName];
-          $data['blogAuthor']=$_POST[blogAuthor];
-          $data['blogContent']=$_POST[blogContent];
+          $data['eventName']=$_POST['eventName'];
+          $data['eventFee']=$_POST['eventFee'];
+          $data['eventType']=$_POST['eventType'];
+          $data['fromDate']=$_POST['fromDate'];
+          $data['toDate']=$_POST['toDate'];
+          $data['eventDescription']=$_POST['eventDescription'];
+          $data['eventInstruction']=$_POST['eventInstruction'];
+          $data['googleFormLink']=$_POST['googleFormLink'];
           $this->insert($data);
           $this->view('Event/newEvent');
         }

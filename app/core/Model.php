@@ -21,7 +21,6 @@ trait Model {
                 	break;
             }
            else {
-		   print_r("two".$query);
                $query .=$key . " = :". $key . " && ";
             }
         }
@@ -75,7 +74,6 @@ trait Model {
         $query =trim($query," , ");
         $query .=" where $id_column = :$id_column ";
         $data[$id_column] =$id;
-        print_r($query);
          $this->query($query,$data);
          return false;
     }

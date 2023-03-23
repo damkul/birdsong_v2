@@ -9,7 +9,7 @@
     <hr class="new-blog-hr">
     <div class="new-blog-form-container">
                 <form action="../postEditBlog" method="post" enctype="multipart/form-data">
-                  <input type="hidden" name="blogId" value="<?php $data[0]->blogId?>">
+                  <input type="hidden" name="blogId" value="<?php echo $data[0]->blogId ?>">
                     <div class="modal-input-container">
                       <label for="">Blog Name</label>
                       <input class="form-input newBlogName" name="blogName" value="<?php echo $data[0]->blogName ?>"></input>

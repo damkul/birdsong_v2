@@ -1413,9 +1413,49 @@
     color: #000;
   }
   
+  /* Event details */
+  .eventDetails{
+    width: 70%;
+    margin: 2rem auto;
+    border: 2px solid #36802d;
+    border-radius: 10px;
+    padding:2rem
+  }
+  .eventDetails hr{
+    height: 0.3rem;
+    background-color: #36802d;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .eventDetails .sub-heading{
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .eventDetails  .date-heading{
+    font-size: 16px;
+    color:rgb(24, 1, 231);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  .eventDetails .info{
+    font-size: 14px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .eventDetails .header{
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .eventDetails .text{
+    margin-right: 4rem;
+    margin-left: 0;
+  }
   
-  
-  
+
+
   /* Observations */
   .specie{
     margin-bottom: 4rem;

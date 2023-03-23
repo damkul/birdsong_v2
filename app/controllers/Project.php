@@ -38,6 +38,11 @@ class Project extends Controller{
         $result = $this->delete($project,'projectId');
         $this->view('Project/project');
       }
+      public function projectDetails($id){
+        $project['projectId'] = $id;
+        $result = $this->where($project);
+        $this->view('Project/projectDetails',$result);
+      }
       public function getProgects(){
         $query = [];
         $res = [];

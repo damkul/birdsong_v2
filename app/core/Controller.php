@@ -2,7 +2,6 @@
 class Controller 
 {
     public function view($name, $data = []){
-        print_r($name);
         $filename= "./app/views/".$name.".view.php";
         if (!empty($data)) {;
             extract($data);

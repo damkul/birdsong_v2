@@ -54,10 +54,10 @@ class Event extends Controller
           $result = $this->delete($blog,'blogId');
           $this->view('Event/blog');
         }
-        public function readEvent($id){
-          $blog['blogId'] = $id;
-          $result = $this->where($blog);
-          $this->view('Event/readEvent',$result);
+        public function eventDetails($id){
+          $event['eventId'] = $id;
+          $result = $this->where( $event);
+          $this->view('Event/eventDetails',$result);
         }
       public function getEventData(){
           $query = [];

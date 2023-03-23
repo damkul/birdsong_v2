@@ -14,24 +14,16 @@
                     <form action="/observations/observationDetails" method="post" enctype="multipart/form-data">
                     <input type="search" id="search-text" list="birdNames" name="q">
                     <datalist id="birdNames">
-                        <% if(obsList.length > 0) {%>
-                            
-                            <% obsList.forEach(element => { %>
-                                <option value="<%= element.birdName %>" class="bird-name" name="birdName"></option>
-                             
-                            <% }) %> 
-
-                        <% } %>
+                    <?php if(!empty($data)): ?> 
+                        <?php foreach($data as $key): ?> 
+                                <option value="<?php $key->birdName ?>" class="bird-name" name="birdName"></option>
+                                <?php endforeach ?> 
+                            <?php endif; ?> 
                     </datalist>
                     <button type="submit">search</button>
                 </form>
                 </div>
-                <% if (role >=0) { %>
-                    <div class="add-obs">
-                        <button id="add-obs-btn"><a href="/observations/new" >Add Observation</a></button>
-                    </div>
-                <% } %>
-                
+              
             </div>
             <div class="species">
                 <div class="specie">
@@ -40,25 +32,23 @@
                         <hr class="ruler">
                     </div>
                     <div class="obs-list">
-                        <!-- <h3>List Of Some Important Birds Observation</h3> -->
-                        <div><%= error %> <%= success %> </div>
-                        <% if(obsList.length>0){ %>
-                            <% obsList.forEach(function(obs){ %> 
+                        <?php if(!empty($data)): ?>
+                            <?php foreach($data as $key): ?> 
                                 <div class="obs">
                                     <div class="obs-img">
-                                        <img src="<?php echo ROOT ?>/images/<%= obs.imageName %> " alt="">
+                                        <img src="<?php echo ROOT ?>/images/<?php $key->imageName ?> " alt"">
                                     </div>
-                                    <div class="obs-info">
-                                        <a href="/observations/observationDetails/<%= obs.obsId %>"><h4><%= obs.birdName %></h4></a>
-                                        <p><%= obs.description %></p>
+                                    <div class"obs-info">
+                                        <a href"/observations/observationDetails/<?php $key->obsid ?>"><h4><?php echo $key->birdName ?></h4></a>
+                                        <p><?php echo $key->description ?></p>
                                     </div>
-                                    <div class="obs-sound">
-                                        <audio src="<?php echo ROOT ?>/images/<%= obs.soundName %> " controls></audio>
+                                    <div class"obs-sound">
+                                        <audio src"<?php echo ROOT ?>/images/<?php $key->soundName ?> " controls></audio>
                                     </div>
                                 </div>
                                 <hr>
-                            <% }) %> 
-                        <% } %>     
+                            <?php endforeach ?> 
+                        <?php endif; ?>     
                     </div>
                 </div>
                 <div class="specie">

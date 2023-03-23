@@ -52,8 +52,6 @@ class Project extends Controller{
             
            }
         }
-       // array_push($ongoingProjects,"ongoingProjects");
-       // array_push($previousProjects,"previousProjects");
        $res['ongoingProjects'] = $ongoingProjects;
         $res['previousProjects'] = $previousProjects;
         return $res;

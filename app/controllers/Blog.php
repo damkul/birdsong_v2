@@ -8,8 +8,6 @@ class Blog extends Controller{
 
     public function index(){
         $data = $this->getBlogData();
-       // print_r($data[0][0]);
-       
         $this->view('Blog/blog',$data);
 
      }
@@ -50,12 +48,60 @@ class Blog extends Controller{
       public function getBlogData(){
         $query = [];
         $query['getAllBlogs'] = "select blog.blogId,blogName,blogAuthor,date,blogContent,bi.imageName,bs.soundName
-        from birdsong.blog blog
-        left join birdsong.blogimages bi on blog.blogId = bi.blogId
-        left join birdsong.blogsounds bs on blog.blogId = bs.blogId
+        from blog blog
+        left join blogimages bi on blog.blogId = bi.blogId
+        left join blogsounds bs on blog.blogId = bs.blogId
         order by blogName;";
        $result = $this->executeCustomQuery($query);
+       $res = $this->sortBlogData($result);
        return $result;
      }
-     
+     public function sortBlogData($data){
+      $oldBlogName;
+      $newBlogName;
+      $images = [];
+      $sounds = [];
+      $length = count($data)-1;
+      $blogs = [];
+      for ($index = 0; $index < count($data); $index++) {
+        $newBlogName = $data[$index]->blogName;
+        $blog = [];
+        if ($index == 0 || $oldBlogName == $newBlogName) {
+          array_push($images,$data[$index]->imageName);
+          array_push($sounds,$data[$index]->soundName);
+
+        } else {
+          // $blog = {};
+          $blog["blogId"] = $data[$index-1]->blogId;
+          $blog["blogName"] = $data[$index-1]->blogName;
+          $blog["blogAuthor"] = $data[$index-1]->blogAuthor;
+          $blog["blogDate"] = $data[$index-1]->date;
+          $blog["blogContent"] = $data[$index-1]->blogContent;
+          $blog["images"] =  $images;
+          $blog["sounds"] = $sounds;
+          array_push($blogs,$blog);
+          
+          $images = [];
+          $sounds = [];
+          array_push($images,$data[$index]->imageName);
+          array_push($sounds,$data[$index]->soundName);
+          
+        }
+        $oldBlogName = $newBlogName;
+        if ($index == $length) {
+          $blog=[];
+
+          $blog["blogId"] = $data[$index]->blogId;
+          $blog["blogName"] = $data[$index]->blogName;
+          $blog["blogAuthor"] = $data[$index]->blogAuthor;
+          $blog["blogDate"] = $data[$index]->date;
+          $blog["blogContent"] = $data[$index]->blogContent;
+
+          $blog["images"] =  $images;
+          $blog["sounds"] = $sounds;
+          array_push($blogs,$blog);
+        }
+     }
+     return $blogs;
+}
 }

@@ -54,13 +54,24 @@ class Event extends Controller
           $result = $this->where($blog);
           $this->view('Event/readEvent',$result);
         }
-        public function getEventData(){
+      public function getEventData(){
           $query = [];
-          $query['getAllBlogs'] = "select blog.blogId,blogName,blogAuthor,date,blogContent,bi.imageName,bs.soundName
-          from birdsong.blog blog
-          left join birdsong.blogimages bi on blog.blogId = bi.blogId
-          left join birdsong.blogsounds bs on blog.blogId = bs.blogId
-          order by blogName;";
-         return $result = $this->executeCustomQuery($query);
+          $upcomingEvents = [];
+          $previouslyDoneEvents = [];
+          $res = [];
+          $query['getAllBlogs'] = "SELECT * from birdsong.event;";
+          $result = $this->executeCustomQuery($query);
+
+          forEach($result as $key) {
+
+            if ($key->toDate >= date("Y-m-d H:i:s")) {
+              array_push($upcomingEvents,$key);
+            } else {
+              array_push($previouslyDoneEvents,$key);
+            }
+        }
+         $res['upcomingEvents'] = $upcomingEvents;
+         $res['previouslyDoneEvents'] = $previouslyDoneEvents;
+         return $res;
        }
 }

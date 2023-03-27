@@ -15,9 +15,6 @@
                     <div class="ft-icons"><a href="https://goo.gl/maps/15Y4HzUQ2AjAWXcC9" target="_blank"><i class="fa-brands fa-google"></i></a></div>
                 </div>
             </div>
-            <!-- <div class="bird">
-                <img src="<?php echo ROOT ?>/images/footerImage.png" alt="footer image">
-            </div> -->
         </div>
         <div class="navigation">
             <div class="navigation-links">

@@ -31,8 +31,10 @@ class Observation extends Controller {
         $data['marathiName']=$_POST['marathiName'];
         $data['dateOfObs']=$_POST['dateOfObs'];
         $data['description']=$_POST['description'];
-        $this->insert($data);
-        $this->view('Observation/newObservation');
+        $insertId = $this->insert($data);
+        $this->insertFiles($insertId,$_FILES);
+        $this->fileUpload("file",$_FILES);
+        $this->getNewObservation();
       }
       public function deleteObservation($id){
         $obs['obsId'] = $id;
@@ -53,4 +55,32 @@ class Observation extends Controller {
         group by img.obsId, snd.obsId;";
        return $result = $this->executeCustomQuery($query);
      }
+     public function insertFiles($insertId,$files){
+    
+      $images = [];
+      $sounds = [];
+      $countfiles = count($files['file']['name']);
+      for($i=0;$i<$countfiles;$i++){
+        $fileName = $files['file']['name'][$i];
+        $strings = explode(".", $fileName);
+          if (in_array( "mp3", $strings )) {
+          $soundTable = 'sound';
+          $sound['soundName']= $fileName;
+          $sound['obsId']=$insertId;
+          array_push($sounds,$sound);
+        } else {
+          $imageTable = 'images';
+          $data['imageName']= $fileName;
+          $data['obsId']=$insertId;
+          array_push($images,$data);
+        }
+      }
+      if(!empty($images)){
+        $this->customInsert($images,$imageTable);
+      }
+      if(!empty($sounds)){
+        $this->customInsert($sounds,$soundTable);
+      }
+      $this->fileUpload('file',$files);
+    }
 }

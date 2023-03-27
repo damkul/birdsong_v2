@@ -29,8 +29,8 @@
       </div>
        
         <div class="modal-input-container new-blog-file-upload">
-          <label for="">Upload Images</label>
-          <input type="file" name="image" class="form-input" id="image" multiple>
+          <label for="">Upload Images and Sounds</label>
+          <input type="file" name="file[]" class="form-input" id="image" multiple>
         </div>
         <!-- <div class="modal-input-container new-blog-file-upload">
           <label for="">Upload Sounds</label>

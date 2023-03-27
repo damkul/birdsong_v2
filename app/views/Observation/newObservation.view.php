@@ -45,7 +45,7 @@
                 </div>
                 <div class="input-container">
                     <label for="">Add Images</label>
-                    <input type="file" class="form-input" name="image" id="image" multiple>
+                    <input type="file[]" class="form-input" name="image" id="image" multiple>
                 </div>
                 <!-- <div class="input-container">
                     <label for="">Add Sounds</label>

@@ -7,7 +7,6 @@
         <h2>Update Project</h2>
     <hr class="new-blog-hr">
     <div class="new-blog-form-container"> 
-        <?php print_r($data); ?>
         <form action="../postEditProject" method="post" enctype="multipart/form-data">
             <input type="hidden" name="projectId" value="<?php echo $data[0]->projectId ?>">
               <div class="modal-input-container">

@@ -5,6 +5,8 @@ class Blog extends Controller{
     use Model;
     use Helper;
     protected $table = 'blog';
+    //file upload 
+    
 
     public function index(){
         $data = $this->getBlogData();
@@ -30,8 +32,10 @@ class Blog extends Controller{
         $data['blogAuthor']=$_POST['blogAuthor'];
         $data['blogContent']=$_POST['blogContent'];
         $data['date']=$_POST['blogDate'];
-        $this->insert($data);
-        $this->view('Blog/newBlog');
+        $insertId = $this->insert($data);
+        $this->insertFiles($insertId,$_FILES);
+        $this->fileUpload("file",$_FILES);
+        $this->getNewBlog();
       }
       public function deleteBlog($id){
         //TODO: delete record from foreign key tables 
@@ -104,4 +108,32 @@ class Blog extends Controller{
      }
      return $blogs;
 }
+  public function insertFiles($insertId,$files){
+    
+    $images = [];
+    $sounds = [];
+    $countfiles = count($files['file']['name']);
+    for($i=0;$i<$countfiles;$i++){
+      $fileName = $files['file']['name'][$i];
+      $strings = explode(".", $fileName);
+        if (in_array( "mp3", $strings )) {
+        $soundTable = 'blogsounds';
+        $sound['soundName']= $fileName;
+        $sound['blogId']=$insertId;
+        array_push($sounds,$sound);
+      } else {
+        $imageTable = 'blogimages';
+        $data['imageName']= $fileName;
+        $data['blogId']=$insertId;
+        array_push($images,$data);
+      }
+    }
+    if(!empty($images)){
+      $this->customInsert($images,$imageTable);
+    }
+    if(!empty($sounds)){
+      $this->customInsert($sounds,$soundTable);
+    }
+  }
+
 }

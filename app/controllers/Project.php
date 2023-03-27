@@ -52,7 +52,6 @@ class Project extends Controller{
         $result = $this->executeCustomQuery($query);
         if (count($result) > 1) {
           foreach ($result as $key) {
-            print_r($key->toDate);
             if ($key->toDate >= date("Y-m-d H:i:s")) {
               array_push($ongoingProjects,$key);
             } else {
@@ -65,4 +64,5 @@ class Project extends Controller{
         $res['previousProjects'] = $previousProjects;
         return $res;
      }
+     
 }

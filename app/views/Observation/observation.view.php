@@ -43,7 +43,9 @@
                                         <p><?php echo $key->description ?></p>
                                     </div>
                                     <div class"obs-sound">
-                                        <audio src"<?php echo ROOT ?>/images/<?php $key->soundName ?> " controls></audio>
+                                        <?php echo $key->soundName?>
+                                         <audio id="my-audio" src="<?php echo ROOT ?>/images/<?php echo $key->soundName ?> "></audio>
+                                         <button id="play-button" onclick="playMusic()">Play</button>
                                     </div>
                                 </div>
                                 <hr>
@@ -140,3 +142,11 @@
         </div>
     </div>
 </section>
+<script>
+var myAudio = document.getElementById('my-audio');
+var playButton = document.getElementById('play-button');
+
+playButton.addEventListener("click", function(){
+    myAudio.play();
+});
+</script>

@@ -12,6 +12,9 @@ trait Database
         $stm = $con->prepare($query);
         $check = $stm->execute($data);
         if ($check) {
+            if (str_contains($query, 'insert')) {
+                return $con->lastInsertId();
+            }
            $result = $stm->fetchAll(PDO::FETCH_OBJ);
            if (is_array($result) && count($result)) {
                 return $result;

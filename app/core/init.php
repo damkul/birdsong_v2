@@ -12,5 +12,5 @@ require 'Controller.php';
 require 'Helper.php';
 require 'Style.php';
 require "App.php";
-// require './app/views/header.view.php';
+require './app/views/header.view.php';
 // require './app/views/footer.view.php';

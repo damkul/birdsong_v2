@@ -62,6 +62,7 @@ trait Model {
         $keys = array_keys($data);
         $query = "insert into $this->table (".implode(",",$keys).") values (:".implode(",:",$keys).") ";
         $result = $this->query($query,$data);
+        return $result;
     }
     
     public function update($id,$data,$id_column='id'){
@@ -80,12 +81,25 @@ trait Model {
     public function delete($id,$id_column='id'){
         $data[$id_column] = $id;
         $query = "delete from $this->table where $id_column = :$id_column ";
-        print_r($query);
         $this->query($query,$data);
         return false;
     }
     public function customQuery($query){
          $result = $this->query($query);
          return $result;
+    }
+    public function customInsert($result=[],$tableName){
+        $queries = [];
+        for ($i=0; $i < count((array)$result) ; $i++) { 
+            $keys = array_keys((array)$result[$i]);
+            $query = "insert into $tableName (".implode(",",$keys).") values (:".implode(",:",$keys).") ";
+            $data['query'] = $query;
+            $data['values'] = $result[$i];
+            array_push($queries,$data);
+        }
+        for ($i=0; $i < count($queries) ; $i++) { 
+            $this->query($queries[$i]['query'],$queries[$i]['values']);
+        }
+        $result = [];
     }
 }

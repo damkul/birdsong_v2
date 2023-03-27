@@ -79,4 +79,32 @@ class Event extends Controller
          $res['previouslyDoneEvents'] = $previouslyDoneEvents;
          return $res;
        }
+       public function insertFiles($insertId,$files){
+    
+        $images = [];
+        $sounds = [];
+        $countfiles = count($files['file']['name']);
+        for($i=0;$i<$countfiles;$i++){
+          $fileName = $files['file']['name'][$i];
+          $strings = explode(".", $fileName);
+            if (in_array( "mp3", $strings )) {
+            $soundTable = 'eventsounds';
+            $sound['soundName']= $fileName;
+            $sound['eventId']=$insertId;
+            array_push($sounds,$sound);
+          } else {
+            $imageTable = 'eventimages';
+            $data['imageName']= $fileName;
+            $data['eventId']=$insertId;
+            array_push($images,$data);
+          }
+        }
+        if(!empty($images)){
+          $this->customInsert($images,$imageTable);
+        }
+        if(!empty($sounds)){
+          $this->customInsert($sounds,$soundTable);
+        }
+        $this->fileUpload('file',$files);
+      }
 }

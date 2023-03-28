@@ -9,7 +9,7 @@
             <hr class="ruler">
         </div>
         <?php $role =1; if ($role>=0): ?>
-            <div class="addAdvBtnCntr"><button class="addAdvBtn"><a href="/sponsership/newSponsership">Add Sponsership</a> </button></div>
+            <div class="addAdvBtnCntr"><button class="addAdvBtn"><a href="./sponsership/getNewSponsership">Add Sponsership</a> </button></div>
         <?php endif;  ?>
         
         <div><?php $error; ?><?php $success; ?></div>
@@ -22,8 +22,8 @@
                         <a href = "<?php echo $key->websiteLink ?>" class="advFor"><?php echo $key->websiteLink ?></a>
                         <p class="date">Sponsership Till<?php echo $key->toDate ?> </p> 
                         <?php $role =1; if ($role>0): ?>
-                            <span class="adv-btn adv-edit-btn"><a href="/sponsership/updateSponsership/<?php echo $key->advId ?>">Edit</a></span>
-                            <span class="adv-btn adv-delete-btn"><a href="/sponsership/deleteSponsership/<?php echo $key->advId ?>">Delete</a></span>
+                            <span class="adv-btn adv-edit-btn"><a href="./sponsership/getEditSponsership/<?php echo $key->advId ?>">Edit</a></span>
+                            <span class="adv-btn adv-delete-btn"><a href="./sponsership/deleteSponsership/<?php echo $key->advId ?>">Delete</a></span>
                         <?php endif; ?>
                         
                     </div>

@@ -9,6 +9,11 @@
             <h2 class="page-heading">All Events</h2>
             <hr class="ruler">
         </div>
+        <div class="new-blog-btn">
+                <button class="addNewBlogBtn"><a href="./event/getNewEvent">Add New Event</a></button>
+              </div>
+            <div>
+        </div>
         <div class="event-container">
             <?php if(!empty($data)): ?>
                 <?php foreach($data['upcomingEvents'] as $key): ?>
@@ -31,8 +36,8 @@
                             </div>
                             <?php $role=1; if ($role>0): ?>
                                 <div class="event-btn-cntr">
-                                    <button class="btn"><a href="/events/editEvent/<?php $key->eventId ?> ">edit</a></button>
-                                    <button class="btn"><a href="/events/deleteEvent/<?php $key->eventId ?>" name="id"> delete</a></button>
+                                    <button class="btn"><a href="./event/getEditEvent/<?php echo $key->eventId ?> ">edit</a></button>
+                                    <button class="btn"><a href="./event/deleteEvent/<?php echo $key->eventId ?>" name="id"> delete</a></button>
                                 </div>
                             <?php endif; ?>
                             
@@ -40,7 +45,7 @@
                         
                         <div class="register-btn">
                             <!-- <a href="/events/registerForEvent/<?php//= //$key->eventId +"+"+ $key->eventFee ?>">Register</a> -->
-                            <a href="<?php $key->googleFormLink ?>" target="_blank">Register</a>
+                            <a href="./event/eventDetails/<?php echo $key->eventId ?>">Get Details</a>
                         </div>
                     </div>
                     
@@ -67,8 +72,8 @@
                         <td><?php echo "1"?></td>                   
                         <td><?php echo $key->eventName ?></td>
                         <td><?php echo $key->toDate ?> </td>
-                        <td class="last-col" id="lastCol"><a class="done-links" href="/events/editPreviouslyDoneEvent/<?php $key->eventId ?>">View/Edit</a> 
-                        <a class="done-links" href="/events/deletePreviouslyDoneEvent/<?php $key->eventId ?>">Delete</a></td>
+                        <td class="last-col" id="lastCol"><a class="done-links" href="./event/getEditEvent/<?php echo $key->eventId ?>">View/Edit</a> 
+                        <a class="done-links" href="./event/deleteEvent/<?php echo $key->eventId ?>">Delete</a></td>
                     </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>     

@@ -23,7 +23,9 @@
                     <button type="submit">search</button>
                 </form>
                 </div>
-              
+                <div class="add-obs">
+                        <button id="add-obs-btn"><a href="./observation/getNewObservation" >Add Observation</a></button>
+                    </div>
             </div>
             <div class="species">
                 <div class="specie">
@@ -39,7 +41,7 @@
                                         <img src="<?php echo ROOT ?>/images/<?php $key->imageName ?> " alt"">
                                     </div>
                                     <div class"obs-info">
-                                        <a href"/observations/observationDetails/<?php $key->obsid ?>"><h4><?php echo $key->birdName ?></h4></a>
+                                        <a href="./observation/readObservation/<?php echo $key->obsid ?>"><h4><?php echo $key->birdName ?></h4></a>
                                         <p><?php echo $key->description ?></p>
                                     </div>
                                         <audio id="track">

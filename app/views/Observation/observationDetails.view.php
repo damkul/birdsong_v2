@@ -11,13 +11,13 @@
                         <div class="left-section">
                             <div class="top-section">
                                 <div class="obs-name">
-                                    <h2><?php echo observation.birdName ?></h2>
+                                    <h2><?php echo $data[0]->birdName ?></h2>
                                     <p>scientific name</p>
                                 </div>
-                                <?php if ($role >0): ?>
+                                <?php $role=1; if ($role >0): ?>
                                     <div class="edit-obs">
-                                        <a class="link" href="/observations/editObservation/<?php echo observation.obsId ?>">Edit</a>
-                                        <a class="link del" href="/observations/delete/<?php echo observation.obsId ?>">Delete</a>
+                                        <a class="link" href="../getEditObservation/<?php echo $data[0]->obsId ?>">Edit</a>
+                                        <a class="link del" href=../deleteObservation/<?php echo $data[0]->obsId ?>">Delete</a>
                                     </div>
                                 <?php endif; ?>
                                 
@@ -28,24 +28,24 @@
                                 <div class="count-section">
                                     <div class="count-box per-user-bird-image-count">
                                         <span><i class="fa-solid fa-camera"></i></span>
-                                        <span class="stat-text"><?php echo observation.imageCount ?></span>
+                                        <span class="stat-text"><?php echo $data[0]->imageCount ?></span>
                                     </div>
                                     <div class="count-box per-user-sound-count">
                                         <span><i class="fa-solid fa-play"></i></span>
-                                        <span class="stat-text"><?php echo observation.soundCount ?></span>
+                                        <span class="stat-text"><?php echo $data[0]->soundCount ?></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="right-section">
                             <div class="main-image-container">
-                                <img src="<?php echo ROOT ?>/images/<?php echo observation.images[0] ?> " alt="" id="main-image">
+                                <img src="<?php echo ROOT ?>/images/<?php echo $data[0]->images[0] ?> " alt="" id="main-image">
                             </div>
                         </div>
                     </div>
                     <div class="obs-details-image-container">
-                        <?php if(observation.images.length > 0): ?>
-                            <?php foreach($observation.images as $key): ?>
+                        <?php if(!empty($data[0]->images) ): ?>
+                            <?php foreach($data[0]->images as $key): ?>
                                 <div class="small-obs-img">
                                     <img src="<?php echo ROOT ?>/images/<?php echo $key?>" alt="" onclick="switchImage('<?php echo $key ?>')">
                                 </div>
@@ -55,11 +55,11 @@
                 </div>
                 <div class="obs-details-description">
                     <h3>Description</h3>
-                    <p><?php echo observation.description ?></p>
+                    <p><?php echo $data[0]->description ?></p>
                  </div>
                  <div class="obs-details-sound-container">
-                    <?php if($observation.sounds.length > 0): ?>
-                        <?php foreach($observation.sounds as $key): ?>
+                    <?php if(!empty($data[0]->sounds)): ?>
+                        <?php foreach($data[0]->sounds as $key): ?>
                             <div class="small-obs-sound">
                                 <audio src="/sounds/<?php echo $key   ?> " controls></audio>
                             </div>

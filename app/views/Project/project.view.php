@@ -8,6 +8,9 @@
             <h2 class="page-heading">All Projects</h2>
             <hr class="ruler">
         </div>
+        <div class="new-project-container">
+                <button><a href="./project/getNewProject">New Project</a></button>
+            </div>
         <div class="projects-container">
             <?php if (count($data)>1): ?> 
                 
@@ -17,7 +20,7 @@
                                 <img src="<?php echo ROOT ?>/images/<?php echo $key->imageName ?>" alt="">
                             </div>
                             <div class="info-cntr">
-                                <h3><?php echo $key->title ?></h3>
+                                <h3><a href="./project/projectDetails/<?php echo $key->projectId ?>"><?php echo $key->title ?></a></h3>
                         
                                 <p class="prj-desc"><?php echo $key->description ?></p>
                                 <span><a href="<?php echo $key->eBirdLink ?>" class="ebird-link" target="_blank"><?php echo $key->eBirdLink ?> </a></span>
@@ -25,8 +28,8 @@
                             </div>
                             <?php $role=1; if($role>0): ?>
                                 <div class="bottom">
-                                    <button class="btn"><a href="/projects/editProject/<?php $key->projectId ?> ">Edit</a></button>
-                                    <button class="btn"><a href="/projects/deleteProject/<?php $key->projectId ?>">Delete</a></button>
+                                    <button class="btn"><a href="./project/getEditProject/<?php echo $key->projectId ?> ">Edit</a></button>
+                                    <button class="btn"><a href="./project/deleteProject/<?php echo $key->projectId ?>">Delete</a></button>
                                 </div>
                             <?php endif; ?>
                         </div>

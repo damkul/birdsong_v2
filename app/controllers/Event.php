@@ -36,13 +36,12 @@ class Event extends Controller
           $data['eventInstruction']=$_POST['eventInstruction'];
           $data['googleFormLink']=$_POST['googleFormLink'];
           $this->insert($data);
-          $this->view('Event/newEvent');
+          $this->getNewEvent();
         }
         public function getRegister(){
           $this->view('Event/newEvent');
         }
         public function postRegister(){
-          print_r($_POST);
           $data['blogName']=$_POST[blogName];
           $data['blogAuthor']=$_POST[blogAuthor];
           $data['blogContent']=$_POST[blogContent];

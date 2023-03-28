@@ -43,8 +43,8 @@ class Observation extends Controller {
       }
       public function readObservation($id){
         $obs['obsId'] = $id;
-        $result = $this->where($blog);
-        $this->view('Observation/observationDetail',$result);
+        $result = $this->where($obs);
+        $this->view('Observation/observationDetails',$result);
       }
       public function getObservations(){
         $query = [];

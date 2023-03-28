@@ -10,7 +10,7 @@
       <hr class="ruler" />
     </div>
         <div class="new-blog-container">
-          <button class="addNewBlogBtn"><a href="/blogs/writeNewBlog">Write New Blog</button>
+          <button class="addNewBlogBtn"><a href="./blog/getNewBlog">Write New Blog</button>
         </div>
         <div class="blog-container">
       <?php if( count($data) > 0): ?> 
@@ -28,14 +28,14 @@
           </div>
             
             <div class="blog-btn-cntnr">
-                <button  class="blog-btn"><a href="/blogs/readBlog/<?php $key->blogId ?> ">Read More</a></button>
+                <button  class="blog-btn"><a href="./blog/readBlog/<?php echo $key->blogId ?>">Read More</a></button>
             </div>
         </div>
         </div>
         <?php $role=1; if ($role > 0): ?>
           <div class="actions">
-            <button><a href="/blogs/editBlog/<?php $key->blogId ?>"> edit</a></button>
-            <button><a href="/blogs/deleteBlog/<?php $key->blogId ?>" name="id"> delete</a></button>
+            <button><a href="./blog/getEditBlog/<?php echo $key->blogId ?>"> edit</a></button>
+            <button><a href="./blog/deleteBlog/<?php echo $key->blogId ?>" name="id"> delete</a></button>
           </div>
         <?php endif; ?>
         

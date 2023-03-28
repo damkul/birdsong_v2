@@ -5,11 +5,11 @@
 <section>
     <div class="container">
         <div class="display-blog-container">
-        <h2 class="blog-name"><?php echo blog.blogName ?> </h2>
+        <h2 class="blog-name"><?php echo $data[0]->blogName ?> </h2>
                     <hr>
-                    <span class="sub-heading"><?php echo blog.blogAuthor ?>, </span><span class="sub-heading"><?php echo blog.date ?>, </span>
-                    <img src="<?php echo ROOT ?>/images/<?php echo blog.imageName ?> " alt="" class="blog-image">
-                    <p class="blogcontent"><?php echo blog.blogContent ?></p> 
+                    <span class="sub-heading"><?php echo $data[0]->blogAuthor ?>, </span><span class="sub-heading"><?php echo $data[0]->date ?>, </span>
+                    <img src="<?php echo ROOT ?>/images/<?php echo $data[0]->imageName ?> " alt="" class="blog-image">
+                    <p class="blogcontent"><?php echo $data[0]->blogContent ?></p> 
         </div>
     </div>
 </section>

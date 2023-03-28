@@ -7,11 +7,13 @@ class Observation extends Controller {
 
     public function index(){
       $data = $this->getObservations();
+      $data['birds'] = $this->getList();
         $this->view('Observation/observation',$data);
      }
      public function getEditObservation($id){
         $obs['obsId'] = $id;
         $result = $this->where($obs);
+        $result['birds'] = $this->getList();
         $this->view('Observation/editObservation',$result);
      }
      public function postEditObservation(){
@@ -22,7 +24,8 @@ class Observation extends Controller {
         $this->view('Observation/editObservation',$result);
      }
       public function getNewObservation(){
-        $this->view('Observation/newObservation');
+        $result['birds'] = $this->getList();
+        $this->view('Observation/newObservation',$result);
       }
       public function postNewObservation(){
         print_r($_POST);
@@ -83,4 +86,10 @@ class Observation extends Controller {
       }
       $this->fileUpload('file',$files);
     }
+    function getList(){
+      $query = [];
+        $query['getBirds'] = "SELECT * from birds";
+       return $result = $this->executeCustomQuery($query);
+    }
+    
 }

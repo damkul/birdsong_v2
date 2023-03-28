@@ -13,12 +13,18 @@
                 <input type="hidden" name="obsId" value="<?php echo $data[0]->obsId ?> ">
                 <div class="input-container">
                     <label for="">Bird Name</label>
-                    <input type="text" class="form-input" name="birdName" value="<?php echo $data[0]->birdName ?>">
+                    <!-- <input type="text" class="form-input" name="birdName" value="<?php // echo $data[0]->birdName ?>"> -->
+                    <select name="birdName" id="birdNameSelect" class="form-input" onchange="setName()" required>
+                    <option><?php  echo $data[0]->birdName ?></option>
+                        <?php for($i=0;$i<count($data['birds']);$i++) {
+                            echo("<option id='birdName'  value = '" . $data['birds'][$i]->birdName . "'>" . $data['birds'][$i]->birdName . "</option>");
+                        } ?>
+                    </select>
                 </div>
                 <div class="addtional-info">
                     <div class="input-container">
                         <label for="">Scientific Name</label>
-                        <input type="text" class="form-input" name="scientificName" value="<?php echo $data[0]->scientificName ?> ">
+                        <input type="text" class="form-input" name="scientificName" id="sName" value="<?php echo $data[0]->scientificName ?> " disabled>
                     </div>
                     <div class="input-container">
                         <label for="">Marathi Name</label>
@@ -113,6 +119,32 @@
 </section>
 
 <script>
+
+var scientificNames =[];
+function sortNames(){
+    var result = <?php echo json_encode($data); ?>;
+    var names ={};
+    result["birds"].forEach(element => {
+    var names ={};
+     names['birdName'] = element.birdName;
+     names['sName'] = element.scientificName;
+     scientificNames.push(names);
+});
+}
+
+ function setName(){
+    
+    var select = document.getElementById("birdNameSelect");
+    var sName = document.getElementById("sName");
+    sortNames()
+    console.log(scientificNames);
+    var birdName = select.value;
+    for (let index = 0; index < scientificNames.length; index++) {
+        if (scientificNames[index].birdName === birdName) {
+            sName.value = scientificNames[index].sName;
+        }
+    }
+}
     //get the form by its id
 const form = document.getElementById("contact-form"); 
 

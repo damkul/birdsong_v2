@@ -12,11 +12,11 @@
             <div class="search-container">
                 <div class="search-input">
                     <form action="/observations/observationDetails" method="post" enctype="multipart/form-data">
-                    <input type="search" id="search-text" list="birdNames" name="q">
+                    <input type="search" id="search-text" list="birdNames" name="q" autocomplete="off">
                     <datalist id="birdNames">
                     <?php if(!empty($data)): ?> 
-                        <?php foreach($data as $key): ?> 
-                                <option value="<?php $key->birdName ?>" class="bird-name" name="birdName"></option>
+                        <?php foreach($data["birds"] as $keys): ?> 
+                                 <option value="<?php echo $keys->birdName ?>" class="bird-name" name="birdName"><?php echo $keys->birdName ?></option> 
                                 <?php endforeach ?> 
                             <?php endif; ?> 
                     </datalist>
@@ -35,17 +35,17 @@
                     </div>
                     <div class="obs-list">
                         <?php if(!empty($data)): ?>
-                            <?php foreach($data as $key): ?> 
+                            <?php for ($i=0; $i < (count($data) -1) ; $i++): ?> 
                                 <div class="obs">
                                     <div class="obs-img">
-                                        <img src="<?php echo ROOT ?>/images/<?php $key->imageName ?> " alt"">
+                                        <img src="<?php echo ROOT ?>/images/<?php $data[$i]->imageName ?> " alt"">
                                     </div>
                                     <div class"obs-info">
-                                        <a href="./observation/readObservation/<?php echo $key->obsid ?>"><h4><?php echo $key->birdName ?></h4></a>
-                                        <p><?php echo $key->description ?></p>
+                                        <a href="./observation/readObservation/<?php echo $data[$i]->obsid ?>"><h4><?php echo $data[$i]->birdName ?></h4></a>
+                                        <p><?php echo $data[$i]->description ?></p>
                                     </div>
                                         <audio id="track">
-                                        <source src="<?php echo ROOT ?>/images/<?php $key->soundName ?>" type="audio/mpeg" />
+                                        <source src="<?php echo ROOT ?>/images/<?php $data[$i]->soundName ?>" type="audio/mpeg" />
                                         </audio>
 
                                         <div id="player-container">
@@ -53,7 +53,7 @@
                                         </div>
                                 </div>
                                 <hr>
-                            <?php endforeach ?> 
+                            <?php endfor; ?> 
                         <?php endif; ?>     
                     </div>
                 </div>

@@ -23,9 +23,11 @@
                     <button type="submit">search</button>
                 </form>
                 </div>
-                <div class="add-obs">
+                <?php if (isset($_SESSION["user"])) : ?>
+                    <div class="add-obs">
                         <button id="add-obs-btn"><a href="./observation/getNewObservation" >Add Observation</a></button>
                     </div>
+         <?php endif; ?> 
             </div>
             <div class="species">
                 <div class="specie">

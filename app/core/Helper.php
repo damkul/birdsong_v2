@@ -40,4 +40,10 @@ trait Helper{
     // $check = getimagesize($_FILES[$fieldName]["tmp_name"]);
     // move_uploaded_file($_FILES[$fieldName]["tmp_name"], $target_file);
   }
+
+  function homepagequeries($query){
+    $result =[];
+    $result = $this-> customQuery($query);
+    return $result;
+  }
 }

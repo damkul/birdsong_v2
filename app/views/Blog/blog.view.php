@@ -10,7 +10,9 @@
       <hr class="ruler" />
     </div>
         <div class="new-blog-container">
+        <?php if (isset($_SESSION["user"])) : ?>
           <button class="addNewBlogBtn"><a href="./blog/getNewBlog">Write New Blog</button>
+         <?php endif; ?> 
         </div>
         <div class="blog-container">
       <?php if( count($data) > 0): ?> 
@@ -32,12 +34,15 @@
             </div>
         </div>
         </div>
-        <?php $role=1; if ($role > 0): ?>
-          <div class="actions">
+        <?php if (isset($_SESSION["user"])) : ?>
+                                <?php if ( $_SESSION["user"]["role"] > 0) : ?>
+                                  <div class="actions">
             <button><a href="./blog/getEditBlog/<?php echo $key->blogId ?>"> edit</a></button>
             <button><a href="./blog/deleteBlog/<?php echo $key->blogId ?>" name="id"> delete</a></button>
           </div>
-        <?php endif; ?>
+                                    <?php endif; ?>
+                            <?php endif ?>
+         
         
     </div>
     

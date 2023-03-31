@@ -19,8 +19,15 @@ class Home extends Controller
       $query['getBlogs'] = "select blogName,blogContent from birdsong.blog LIMIT 4;";
       $query['getProjects'] = "select title,description,imageName from birdsong.project LIMIT 4;";
       $query['getSponserships'] = "SELECT advName,imageName FROM birdsong.sponsership;";
-      
-     return $result = $this->executeCustomQuery($query);
+
+      $counter = 0;
+      $allData = [];
+      foreach ($query as $key) {
+         $result = $this->homepagequeries($key);
+         // $allData[$counter] = $result;
+         array_push($allData,$result);
+      }
+     return $allData;
    }
    
 }

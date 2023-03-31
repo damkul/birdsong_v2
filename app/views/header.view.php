@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    <?php if (isset($_SESSION["user"])) : ?>
+        <label id="chk_session" hidden>1</label>   
+    <?php endif; ?>
+ 
     <header>
         <div class="top-bar">
             <div class="logo"><a href="<?php echo PATH ?>/home"><img src="<?php echo ROOT ?>/images/Birdsongsmall-removebg-preview.png" alt="logo for birdsong"></a></div>
@@ -31,12 +35,19 @@
                 <a href="<?php echo PATH ?>/blog">Blog</a>
                 <a href="<?php echo PATH ?>/observation">Audio & Video Gallary</a>
                 <a href="<?php echo PATH ?>/sponsership">Sponsorship</a>
-                <a href="<?php echo PATH ?>/dashboard">Dashboard</a>
+                <?php if (isset($_SESSION["user"])) : ?>
+                   <?php if ( $_SESSION["user"]["role"] > 0) : ?>
+                    <a href="<?php echo PATH ?>/dashboard">Dashboard</a>
+                    <?php endif; ?>
+               <?php endif ?>
+               
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
             </div>
             <div class="login">
-                <label>Damini Kulkarni</label>
-                <button>Login</button>
+                <?php if (isset($_SESSION["user"])) : ?>
+                    <label for=""><?php echo $_SESSION["user"]["name"] ?></label>
+               <?php endif ?>
+                <a href="<?php echo PATH ?>/user/login" id="redirectToLogout"><button id="login-btn">Login</button></a>
             </div>
         </div>
         
@@ -51,5 +62,16 @@
   } else {
     x.className = "topnav";
   }
+}
+
+var chk_session = document.querySelector("#chk_session");
+var login_btn = document.querySelector('#login-btn');
+var login_link = document.querySelector('#redirectToLogout');
+if (chk_session) {
+    login_btn.innerText = "Logout";
+}
+if (login_btn.innerText == "Logout") {
+    var path = <?php echo json_encode(PATH); ?>;
+    login_link.href = path + "/user/logout" 
 }
 </script>

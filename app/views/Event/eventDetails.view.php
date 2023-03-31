@@ -6,7 +6,10 @@
 <section>
     <?php if(!empty($data[0])): ?>
         <div class="eventDetails">
+            <div class="top-cntr">
             <h2><?php echo $data[0]->eventName ?></h2>
+            <a href="#">Register</a>
+            </div>
             <hr>
             <p class=sub-heading><span class="text">Event Type: <?php echo $data[0]->eventType ?></span> <span class="text">Event Fee: <?php echo $data[0]->eventFee ?></span></p>
             <p class="date-heading">From: <?php echo $data[0]->fromDate ?> To: <?php echo $data[0]->toDate ?></p>

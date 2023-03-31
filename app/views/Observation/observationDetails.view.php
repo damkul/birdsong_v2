@@ -14,13 +14,14 @@
                                     <h2><?php echo $data[0]->birdName ?></h2>
                                     <p>scientific name</p>
                                 </div>
-                                <?php $role=1; if ($role >0): ?>
+                                <?php if (isset($_SESSION["user"])) : ?>
+                                <?php if ( $_SESSION["user"]["role"] > 0) : ?>
                                     <div class="edit-obs">
                                         <a class="link" href="../getEditObservation/<?php echo $data[0]->obsId ?>">Edit</a>
                                         <a class="link del" href=../deleteObservation/<?php echo $data[0]->obsId ?>">Delete</a>
                                     </div>
-                                <?php endif; ?>
-                                
+                                    <?php endif; ?>
+                            <?php endif ?>
                             </div>
                             <div class="bottom-section">
                                 <h4>My Stats</h4>

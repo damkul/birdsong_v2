@@ -10,11 +10,14 @@
             <hr class="ruler">
         </div>
         <div class="new-blog-btn">
+        <?php if (isset($_SESSION["user"])) : ?>
                 <button class="addNewBlogBtn"><a href="./event/getNewEvent">Add New Event</a></button>
+                <?php endif; ?>
               </div>
             <div>
         </div>
         <div class="event-container">
+            <?php print_r($data['upcomingEvents']); ?>
             <?php if(!empty($data)): ?>
                 <?php foreach($data['upcomingEvents'] as $key): ?>
                         <div class="events main-evnt">
@@ -34,13 +37,14 @@
                                 <span class="date-format">Date: <?php echo $key->fromDate ?> To <?php $key->toDate ?></span>
                                 <p class="event-text"><?php echo $key->eventDescription ?></p>
                             </div>
-                            <?php $role=1; if ($role>0): ?>
-                                <div class="event-btn-cntr">
-                                    <button class="btn"><a href="./event/getEditEvent/<?php echo $key->eventId ?> ">edit</a></button>
-                                    <button class="btn"><a href="./event/deleteEvent/<?php echo $key->eventId ?>" name="id"> delete</a></button>
-                                </div>
-                            <?php endif; ?>
-                            
+                            <?php if (isset($_SESSION["user"])) : ?>
+                                <?php if ( $_SESSION["user"]["role"] > 0) : ?>
+                                    <div class="event-btn-cntr">
+                                        <button class="btn"><a href="./event/getEditEvent/<?php echo $key->eventId ?> ">edit</a></button>
+                                        <button class="btn"><a href="./event/deleteEvent/<?php echo $key->eventId ?>" name="id"> delete</a></button>
+                                     </div>
+                                    <?php endif; ?>
+                            <?php endif ?>
                         </div>
                         
                         <div class="register-btn">

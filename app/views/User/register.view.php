@@ -7,7 +7,7 @@
     </div>
     <div class="form">
        
-        <form action="/auth/register" method="post" enctype="application/x-www-form-urlencoded">
+        <form action="./registerUser" method="post" enctype="application/x-www-form-urlencoded">
             <div class="input-container">
                 <label for="">Name</label>
                 <input type="Text" class="form-input" name="name">
@@ -29,7 +29,7 @@
                 <input type="password" class="form-input" name="password" minlength="8">
             </div>
             <button class="login-btn">Register</button>
-            <a href="/login" class="register-text">Already have account? Login Here!</a>
+            <a href="./login" class="register-text">Already have account? Login Here!</a>
         </form>
     </div>
 </div>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,16 +9,167 @@
     <title>Document</title>
 </head>
 <body>
+
+<section class="banner">
+    <div class="banner-heading"><h1 class="main-heading">Discover Birding</h1>
+    <p class="sub-heading">Nature is not a place to visit, it is home.In every walk with nature one receives far more than he seeks.Nature always wears the colors of the spirit.</p></div>
+</section>
+<section id="soundOfBirds">
+    <div class="container">
+        <div class="page-heading-container">
+            <h2 class="page-heading">Lets Explore the SOUND of Birds</h2>
+            <hr class="ruler">
+        </div>  
+        <!-- Observation and sponsorship start -->
+
+        <div class="adv-container">
+            <div class="soundContainer">
+                <?php if(!empty($data[1])) : ?> 
+                    <?php foreach($data[1] as $key): ?>
+                        <?php 
+                        if ($key->imageName=='NULL') {
+                            $key->imageName = 'logo_0.5.png';
+                        } 
+                        ?>   
+                        <div class="sounds">
+                               <div class="imgCnt">
+                                    <img src="<?php echo ROOT ?>/images/<?php echo $key->imageName ?>" alt="">
+                               </div>
+                               <div class="info">
+                                <h3 class="nameOfBird content-heading"><?php echo $key->birdName ?></h3>
+                                <h4 class="small-gray-text"><?php echo $key->scientificName ?></h4>
+                                <h4 class="small-gray-text"><?php echo $key->marathiName ?></h4>
+                               </div>
+                        </div>
     
-    <?php 
-        foreach ($data as $keys ) {
-           
-           foreach ($keys as $key => $value) {
-            print_r("key: \n");
-            print_r($key->eventName);
-           }
-        }
-    ?>
+                     <?php endforeach; ?>
+                <?php endif; ?> 
+    
+                <div class="big-button one">
+                   <a href="./observation">Explore More About Sounds Of Birds</a>
+                </div>
+            </div>
+            <div class="adv-cntr">
+                <h3>Thank you for your valuable contribution</h3>
+                <?php if(!empty($data[4])) : ?> 
+                    <?php foreach($data[4] as $key) : ?>
+                         
+                        <div class="adv">
+                            <img src="<?php echo ROOT ?>/images/<?php echo $key->imageName ?> " alt="">
+                        </div>
+                     <?php endforeach; ?>
+                <?php endif; ?> 
+                <div class="big-button">
+                    <a href="./sponsership">Help Us To Grow Our Work</a>
+                 </div>
+            </div>
+        </div>
+
+        <!-- Observation and sponsorship end -->
+    </div>
+ </section>
+ <!-- Event section start -->
+ <section id="upcomingEvents">
+    <div class="container">
+        <div class="page-heading-container">
+            <h2 class="page-heading">Join Us at our UPCOMING Events</h2>
+            <hr class="ruler">
+        </div>
+        <div class="upcomingEventsContainer">
+            <?php if(!empty($data[0])): ?> 
+                <?php foreach($data[0] as $key): ?>
+                       
+                    <div class="events">
+                       
+                        <div class="info-cntr"><h3><?php echo $key-> eventName ?> </h3>
+                        <p><?php echo $key-> eventDescription ?> </p></div>
+                    </div>
+
+                 <?php endforeach; ?>
+            <?php endif; ?> 
+            
+        </div>
+        <div class="big-button">
+            <a href="./event">Explore More About Our Upcoming Events</a>
+        </div>
+       
+    </div>
+</section>
+ <!-- Event section end -->
+
+ <!-- blog section start -->
+ <section id="blogs">
+    <div class="container">
+        <div class="page-heading-container">
+            <h2 class="page-heading">Read about Birding</h2>
+            <hr class="ruler">
+        </div>
+        <div class="blogsContainer">
+            <?php if(!empty($data[2])): ?> 
+                <?php foreach($data[2] as $key): ?>
+                   
+                    <div class="blogs">
+                        <div class="imgDiv">
+                            <img src="<?php echo ROOT ?>/images/<?php echo $key->imageName ?>" alt="">
+                        </div> 
+                        <div class="info-cntr">
+                            <h3><?php echo $key->blogName ?></h3>
+                            <p class="blog-content-text"><?php echo $key->blogContent ?> </p>
+                        </div>
+                    </div>
+
+                 <?php endforeach; ?>
+            <?php endif; ?> 
+        </div>
+        <div class="big-button">
+            <a href="./blog">Read What Others are Writing</a>
+        </div>
+    </div>
+    
+</section>
+ <!-- blog section end -->
+
+<!-- project seion start -->
+
+<section id="ongoingProjects">
+    <div class="container">
+        <div class="page-heading-container ongoingProjectText">
+            <h2 class="page-heading">Our Ongoing Projects</h2>
+            <hr class="ruler">
+        </div>
+        <div class="ongoingProjectsContainer">
+            <div class="projectDiv">
+                <?php if(!empty($data[3])): ?> 
+                    <?php foreach($data[3] as $key): ?>
+                        <?php 
+                        if ($key->imageName=='NULL') {
+                            $key->imageName = 'logo_0.5.png';
+                        } 
+                        ?> 
+                        <div class="ongoingProject">
+                            <div class="card">
+                                <div class="img">
+                                    <img src="/images/<?php $key->imageName ?> " alt="">
+                                </div>
+                                <div class="text">
+                                    <h3><?php echo $key->title ?> </h3>
+                                <p><?php echo $key->description.substr(0,80) ?> </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                     <?php endforeach; ?>
+                <?php endif; ?> 
+            </div>
+            <div class="big-button">
+                <a href="./project">Know More About Upcomig Projects</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- project seion end -->
+
 </body>
 <section class="footer">
     <div class="footer-container">
@@ -107,7 +259,6 @@ const formEvent = form.addEventListener("submit", (event) => {
   //3.
   sendMail(mail);
 });
-
 
 
 </script>

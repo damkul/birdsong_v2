@@ -8,9 +8,12 @@
             <h2 class="page-heading">All Projects</h2>
             <hr class="ruler">
         </div>
-        <div class="new-project-container">
+        <?php if (isset($_SESSION["user"])) : ?>
+            <div class="new-project-container">
                 <button><a href="./project/getNewProject">New Project</a></button>
             </div>
+         <?php endif; ?> 
+        
         <div class="projects-container">
             <?php if (count($data)>1): ?> 
                 
@@ -26,12 +29,15 @@
                                 <span><a href="<?php echo $key->eBirdLink ?>" class="ebird-link" target="_blank"><?php echo $key->eBirdLink ?> </a></span>
                                
                             </div>
-                            <?php $role=1; if($role>0): ?>
-                                <div class="bottom">
+                            <?php if (isset($_SESSION["user"])) : ?>
+                                <?php if ( $_SESSION["user"]["role"] > 0) : ?>
+                                    <div class="bottom">
                                     <button class="btn"><a href="./project/getEditProject/<?php echo $key->projectId ?> ">Edit</a></button>
                                     <button class="btn"><a href="./project/deleteProject/<?php echo $key->projectId ?>">Delete</a></button>
                                 </div>
-                            <?php endif; ?>
+                                    <?php endif; ?>
+                            <?php endif ?>
+                            
                         </div>
                      <?php endforeach;   ?> 
             <?php endif;   ?> 

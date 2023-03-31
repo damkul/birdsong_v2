@@ -8,10 +8,9 @@
             <h2 class="page-heading">All Sponserships</h2>
             <hr class="ruler">
         </div>
-        <?php $role =1; if ($role>=0): ?>
+        <?php if (isset($_SESSION["user"])) : ?>
             <div class="addAdvBtnCntr"><button class="addAdvBtn"><a href="./sponsership/getNewSponsership">Add Sponsership</a> </button></div>
-        <?php endif;  ?>
-        
+         <?php endif; ?> 
         <div><?php $error; ?><?php $success; ?></div>
         <div class="main-adv-container">
         <?php if(!empty($data)): ?> 
@@ -21,11 +20,14 @@
                         <h4 class="adv-name"><?php echo $key->advName ?></h4>
                         <a href = "<?php echo $key->websiteLink ?>" class="advFor"><?php echo $key->websiteLink ?></a>
                         <p class="date">Sponsership Till<?php echo $key->toDate ?> </p> 
-                        <?php $role =1; if ($role>0): ?>
-                            <span class="adv-btn adv-edit-btn"><a href="./sponsership/getEditSponsership/<?php echo $key->advId ?>">Edit</a></span>
+                        <?php if (isset($_SESSION["user"])) : ?>
+                                <?php if ( $_SESSION["user"]["role"] > 0) : ?>
+                                  <div class="actions">
+                                  <span class="adv-btn adv-edit-btn"><a href="./sponsership/getEditSponsership/<?php echo $key->advId ?>">Edit</a></span>
                             <span class="adv-btn adv-delete-btn"><a href="./sponsership/deleteSponsership/<?php echo $key->advId ?>">Delete</a></span>
-                        <?php endif; ?>
-                        
+          </div>
+                                    <?php endif; ?>
+                            <?php endif ?>
                     </div>
                 <?php endforeach; ?>
               <?php endif; ?>

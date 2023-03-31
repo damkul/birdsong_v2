@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="form">
-        <form action="/auth/login" method="post" enctype="application/x-www-form-urlencoded">
+        <form action="./loginUser" method="post" enctype="application/x-www-form-urlencoded">
             <div class="input-container">
                 <label for="">Email</label>
                 <input type="text" class="form-input" name="email">
@@ -17,7 +17,7 @@
                 <input type="password" class="form-input" name="password">
             </div>
             <button class="login-btn">LOGIN</button>
-            <a href="/login/new" class="register-text">Don't have account? Register Here!</a>
+            <a href="./register" class="register-text">Don't have account? Register Here!</a>
         </form>
     </div>
 </div>

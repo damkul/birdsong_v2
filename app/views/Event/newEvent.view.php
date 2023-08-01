@@ -8,7 +8,7 @@
     <hr>
 </div>
     <div class="new-event-form-container">
-        <form action="postNewEvent" method="post" enctype="multipart/form-data">
+        <form action="postNewEvent" method="POST" enctype="multipart/form-data">
            
             <div class="modal-input-container">
                 <label for="">Event Name</label>
@@ -21,7 +21,12 @@
             <div class="date-container">
                 <div class="modal-input-container">
                     <label for="">Event Type</label>
-                    <input type="text" class="form-input newEventType" name="eventType" required>
+                    <select type="text" class="form-input newEventType" name="eventType" required>
+                        <option>Seminar</option> 
+                        <option>Tour</option> 
+                        <option>Nature Camp</option> 
+                        <option>Event</option> 
+                    </select>
                 </div>
                 <div class="modal-input-container">
                     <label for="">From Date</label>
@@ -33,13 +38,10 @@
                 </div>
             </div>
             <div class="modal-input-container">
-                <label for="">Event Description</label>
-                <textarea name="eventDescription" id="" cols="30" rows="10" class="form-input" required></textarea>
+                <label for="">Add Event Description File</label>
+                <input type="file" name="content-file" class="form-input" required></input>
             </div>
-            <div class="modal-input-container">
-                <label>Event Instructions</label>
-                <textarea name="eventInstruction" id="" cols="30" rows="10" class="form-input"></textarea>
-            </div>
+           
             <div class="modal-input-container">
                 <label>Add Images</label>
                 <input type="file" name="image" id="image" class="images" multiple>
@@ -51,7 +53,10 @@
             <div class="modal-input-container">
                 <button class="form-input new-evnt-Btn">Add Event</button>
             </div>
-            
+             <!-- <div class="modal-input-container">
+                <label>Event Instructions</label>
+                <textarea name="eventInstruction" id="" cols="30" rows="10" class="form-input"></textarea>
+            </div> -->
         </form>
     </div>
     <section class="footer">

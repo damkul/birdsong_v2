@@ -13,11 +13,13 @@ trait Helper{
 
   function fileUpload($fieldName,$files){
     $countfiles = count($files['file']['name']);
+    print_r($countfiles);
     for($i=0;$i<$countfiles;$i++){
       $filename = $files['file']['name'][$i];
-
+      print_r( $filename);
       ## Location
-      $location = "E:/downloads/uploads/".$filename;
+      $path = UPLOAD."/";
+      $location = $path.$filename;
       $extension = pathinfo($location,PATHINFO_EXTENSION);
       $extension = strtolower($extension);
 
@@ -45,5 +47,21 @@ trait Helper{
     $result =[];
     $result = $this-> customQuery($query);
     return $result;
+  }
+
+  function uploadSingleFile($files){
+    $uploaddir =  UPLOAD."/";
+    $uploadfile = $uploaddir . $files['content-file']['name'];
+
+    // echo '<pre>';
+    if (move_uploaded_file($files['content-file']['tmp_name'], $uploadfile)) {
+        echo "Success.\n";
+    } else {
+        echo "Failure.\n";
+    }
+
+    // echo 'Here is some more debugging info:';
+    // print_r($_FILES);
+    // print "</pre>";
   }
 }

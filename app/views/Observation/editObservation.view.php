@@ -48,6 +48,10 @@
                     <input type="file" class="form-input" name="sounds" multiple>
                 </div> -->
                 <div class="input-container">
+                        <label for="">YouTube Link</label>
+                        <input type="text" class="form-input" name="youtubeLink">
+                    </div>
+                <div class="input-container">
                     <button class="form-input" type="submit">Save</button>
                 </div>
             </form>

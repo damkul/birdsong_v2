@@ -34,6 +34,7 @@ class Observation extends Controller {
         $data['marathiName']=$_POST['marathiName'];
         $data['dateOfObs']=$_POST['dateOfObs'];
         $data['description']=$_POST['description'];
+        $data['youtubeLink']=$_POST['youtubeLink'];
         $insertId = $this->insert($data);
         $this->insertFiles($insertId,$_FILES);
         $this->fileUpload("file",$_FILES);

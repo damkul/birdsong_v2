@@ -8,6 +8,7 @@
             <h2 class="page-heading">All Projects</h2>
             <hr class="ruler">
         </div>
+        <button><a href="./project/getNewProject">New Project</a></button>
         <?php if (isset($_SESSION["user"])) : ?>
             <div class="new-project-container">
                 <button><a href="./project/getNewProject">New Project</a></button>
@@ -25,7 +26,7 @@
                             <div class="info-cntr">
                                 <h3><a href="./project/projectDetails/<?php echo $key->projectId ?>"><?php echo $key->title ?></a></h3>
                         
-                                <p class="prj-desc"><?php echo $key->description ?></p>
+                                <a class="prj-desc" href="<?php echo UPLOAD ?>/<? $key->description ?>" target="_blank"><?php echo $key->description ?></a>
                                 <span><a href="<?php echo $key->eBirdLink ?>" class="ebird-link" target="_blank"><?php echo $key->eBirdLink ?> </a></span>
                                
                             </div>
@@ -65,7 +66,7 @@
                          <td>1</td>
                          <td><?php echo $key->title ?></td>
                          <td><?php echo $key->title ?></td>
-                         <td><?php echo $key->toDate ?></td>
+                         <td><?php echo date('d/m/Y',strtotime($key->toDate)) ?></td>
                        </tr>
                   
                  <?php endforeach; ?>

@@ -26,11 +26,12 @@ class Project extends Controller{
       }
       public function postNewProject(){
         $data['title']=$_POST['title'];
-        $data['description']=$_POST['description'];
+        $data['description']=$_FILES['content-file']['name'];
         $data['eBirdLink']=$_POST['eBirdLink'];
         $data['fromDate']=$_POST['fromDate'];
         $data['toDate']=$_POST['toDate'];
         $this->insert($data);
+        $this->uploadSingleFile($_FILES);
         $this->view('Project/newProject');
       }
       public function deleteProject($id){

@@ -37,9 +37,9 @@
                   <label for="">eBird Link</label>
                   <input type="text" class="form-input newBlogAuthor" name="eBirdLink">
               </div>
-             <div class="modal-input-container ">
-                  <label for="">Description</label>
-                  <textarea name="description" id="" cols="30" rows="20" class="form-input" required></textarea>
+             <div class="modal-input-container new-blog-file-upload">
+                  <label for="">Add Description file</label>
+                  <input type="file" name="content-file" class="form-input" required></input>
               </div>
               <div class="modal-input-container new-blog-file-upload">
                 <input type="file" name="image" class="form-input">

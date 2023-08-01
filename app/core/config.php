@@ -6,6 +6,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define('DBPASS','root@123');
    define('ROOT','http://localhost:8081/birdsong_v2/public');
    define('PATH','http://localhost:8081/birdsong_v2');
+   define('UPLOAD','http://localhost:8081/birdsong_v2/upload');
 }
 else{
     define('DBNAME','birdcall_birdsong');
@@ -14,4 +15,5 @@ else{
     define('DBPASS','birdsong@123');
     define('ROOT','http://birdcallsindia.in/public');
     define('PATH','http://birdcallsindia.in');
+    define('UPLOAD','http://birdcallsindia.in/upload');
 }

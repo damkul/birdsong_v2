@@ -20,7 +20,6 @@ class Blog extends Controller{
      }
      public function postEditBlog(){
          $blog['blogId'] = $_POST['blogId'];
-        print_r($_POST);
          $result = $this->update($blog['blogId'],$_POST,'blogId');
         // $this->view('Blog/editBlog',$result);
      }
@@ -30,12 +29,17 @@ class Blog extends Controller{
       public function postNewBlog(){
         $data['blogName']=$_POST['blogName'];
         $data['blogAuthor']=$_POST['blogAuthor'];
-        $data['blogContent']=$_POST['blogContent'];
+        $data['blogContent']= $_FILES['content-file']['name'];
         $data['date']=$_POST['blogDate'];
         $insertId = $this->insert($data);
-        $this->insertFiles($insertId,$_FILES);
+        //Insert images
+         $this->insertFiles($insertId,$_FILES);
         $this->fileUpload("file",$_FILES);
-        $this->getNewBlog();
+
+        //Insert blog content
+
+        $this->uploadSingleFile($_FILES);
+        $this->index();
       }
       public function deleteBlog($id){
         //TODO: delete record from foreign key tables 
@@ -46,6 +50,7 @@ class Blog extends Controller{
       public function readBlog($id){
         $blog['blogId'] = $id;
         $result = $this->where($blog);
+        print_r($result);
         $this->view('Blog/readBlog',$result);
       }
 
@@ -135,5 +140,7 @@ class Blog extends Controller{
       $this->customInsert($sounds,$soundTable);
     }
   }
+
+  
 
 }

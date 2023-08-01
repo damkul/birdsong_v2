@@ -8,6 +8,10 @@
             <h2 class="page-heading">Explore Our Membership Packages</h2>
             <hr class="ruler">
         </div>
+        <div class="membersip-benefits">
+            <p>Kindly click on below link to know about membership advantages as well as rules.</p>
+            <a href="<?php echo PATH?>/BIRDSONG appeal for membership.pdf" target="_blank">Membership Details</a>
+        </div>
         <div class="membership-container">
             <div class="membership">
                 <div class="heading-container">
@@ -22,7 +26,8 @@
                         <li><b>Tenure:</b> Annual 1 st January to 31 December.</li>
                     </ul>
                 </div>
-                <div class="buyNow"><a class="button-next" href="https://docs.google.com/forms/d/1GK-H8bXEGTZRlwk61MhutgKDs2sccd61eNbdngTu9mQ/edit?usp=drivesdk" target="_blank">Buy Now</a></div>
+                <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_MC4dfVUCQx2TMq" async> </script> </form>
+                <!-- <div class="buyNow"><a class="button-next" href="https://docs.google.com/forms/d/1GK-H8bXEGTZRlwk61MhutgKDs2sccd61eNbdngTu9mQ/edit?usp=drivesdk" target="_blank">Buy Now</a></div> -->
             </div>
             <div class="membership">
                 <div class="heading-container">

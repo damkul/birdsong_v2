@@ -9,10 +9,12 @@
       <h2 class="page-heading">Read Observations about Birds</h2>
       <hr class="ruler" />
     </div>
+    <button class="addNewBlogBtn"><a href="./blog/getNewBlog">Add New Blog</button>
         <div class="new-blog-container">
-        <?php if (isset($_SESSION["user"])) : ?>
-          <button class="addNewBlogBtn"><a href="./blog/getNewBlog">Write New Blog</button>
-         <?php endif; ?> 
+        
+        <!-- <?php //if (isset($_SESSION["user"])) : ?>
+          <button class="addNewBlogBtn"><a href="./blog/getNewBlog">Add New Blog</button>
+         <?php //endif; ?>  -->
         </div>
         <div class="blog-container">
       <?php if( count($data) > 0): ?> 
@@ -24,13 +26,12 @@
         <div class="information">
           <div class="top-blog">
             <h4 class="content-heading"><?php echo $key->blogName ?> </h4>
-            <p class="small-gray-text"><?php echo $key->blogAuthor ?> , <?php echo $key->date ?></p>
-            <p class="blog-content-text paragraph"><?php echo $key->blogContent.substr(0,100) ?> </p>
+            <p class="small-gray-text"><?php echo $key->blogAuthor ?> , <?php echo date('d/m/Y',strtotime($key->date)) ?></p>
             <audio src="/sounds/<?php $key->soundName ?> "></audio>
           </div>
             
             <div class="blog-btn-cntnr">
-                <button  class="blog-btn"><a href="./blog/readBlog/<?php echo $key->blogId ?>">Read More</a></button>
+            <a href="<?php echo UPLOAD ?>/<?php echo $key->blogContent ?>" target="_blank">Read Blog</a>
             </div>
         </div>
         </div>

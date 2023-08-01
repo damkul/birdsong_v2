@@ -20,10 +20,16 @@
                 <input type="text" class="form-input newEventName" name="eventFee" value="<?php echo $data[0]->eventFee ?> ">
             </div>
             <div class="date-container">
-                <div class="modal-input-container">
+            <select type="text" class="form-input newEventType" name="eventType" value="<?php echo $data[0]->eventType ?> ">
+                        <option>Seminar</option> 
+                        <option>Tour</option> 
+                        <option>Nature Camp</option> 
+                        <option>Event</option> 
+                    </select>
+                <!-- <div class="modal-input-container">
                     <label for="">Event Type</label>
                     <input type="text" class="form-input newEventType" name="eventType" value="<?php echo $data[0]->eventType ?> ">
-                </div>
+                </div> -->
                 <div class="modal-input-container">
                     <label for="">From Date</label>
                     <input type="date" class="form-input newEventFromDate" name="fromDate" id="fromDate">

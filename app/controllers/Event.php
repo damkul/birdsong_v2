@@ -32,8 +32,8 @@ class Event extends Controller
           $data['eventType']=$_POST['eventType'];
           $data['fromDate']=$_POST['fromDate'];
           $data['toDate']=$_POST['toDate'];
-          $data['eventDescription']=$_POST['eventDescription'];
-          $data['eventInstruction']=$_POST['eventInstruction'];
+          $data['eventDescription']=$_FILES['content-file']['name'];
+          // $data['eventInstruction']=$_POST['eventInstruction'];
           $data['googleFormLink']=$_POST['googleFormLink'];
           $this->insert($data);
           $this->getNewEvent();

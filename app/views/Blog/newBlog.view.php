@@ -24,8 +24,8 @@
       </div>
         </div>
         <div class="modal-input-container ">
-          <label for="">Blog Content</label>
-          <textarea name="blogContent" id="" cols="30" rows="20" class="form-input " required></textarea>
+          <label for="">Upload File For Blog Content</label>
+          <input type="file" name="content-file" class="form-input" id="blogContent" required>
       </div>
        
         <div class="modal-input-container new-blog-file-upload">

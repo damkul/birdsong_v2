@@ -10,6 +10,7 @@
             <hr class="ruler">
         </div>
         <div class="new-blog-btn">
+        <button class="addNewBlogBtn"><a href="./event/getNewEvent">Add New Event</a></button>
         <?php if (isset($_SESSION["user"])) : ?>
                 <button class="addNewBlogBtn"><a href="./event/getNewEvent">Add New Event</a></button>
                 <?php endif; ?>
@@ -17,7 +18,6 @@
             <div>
         </div>
         <div class="event-container">
-            <?php print_r($data['upcomingEvents']); ?>
             <?php if(!empty($data)): ?>
                 <?php foreach($data['upcomingEvents'] as $key): ?>
                         <div class="events main-evnt">
@@ -34,8 +34,8 @@
                                 <h3 class="evn-name"><?php $key->eventName ?></h3>
                                 <span class="event-text evn-type">Event Type: <?php echo $key->eventType ?></span>
                                 <span class="event-text evn-type">Fee: <?php echo $key->eventFee ?></span>
-                                <span class="date-format">Date: <?php echo $key->fromDate ?> To <?php $key->toDate ?></span>
-                                <p class="event-text"><?php echo $key->eventDescription ?></p>
+                                <span class="date-format">Date: <?php echo date('d/m/Y',strtotime($key->fromDate)) ?> To <?php echo date('d/m/Y',strtotime($key->toDate)) ?></span>
+                                <a href="<?php echo UPLOAD ?>/<?php echo $key->eventDescription ?>" target="_blank">Get Event Details</a>
                             </div>
                             <?php if (isset($_SESSION["user"])) : ?>
                                 <?php if ( $_SESSION["user"]["role"] > 0) : ?>
@@ -49,7 +49,7 @@
                         
                         <div class="register-btn">
                             <!-- <a href="/events/registerForEvent/<?php//= //$key->eventId +"+"+ $key->eventFee ?>">Register</a> -->
-                            <a href="./event/eventDetails/<?php echo $key->eventId ?>">Get Details</a>
+                            <a href="<?php echo UPLOAD?>/<?php echo $key->eventDescription?>" class="event-text" target="_blank">Get Details</a>
                         </div>
                     </div>
                     

@@ -3,10 +3,10 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define('DBNAME','birdsong');
     define('DBHOST','localhost');
     define('DBUSER','root');
-    define('DBPASS','root@123');
-   define('ROOT','http://localhost:8081/birdsong_v2/public');
-   define('PATH','http://localhost:8081/birdsong_v2');
-   define('UPLOAD','http://localhost:8081/birdsong_v2/upload');
+    define('DBPASS','');
+   define('ROOT','http://localhost:8080/birdsong_v2/public');
+   define('PATH','http://localhost:8080/birdsong_v2');
+   define('UPLOAD','http://localhost:8080/birdsong_v2/upload');
 }
 else{
     define('DBNAME','birdcall_birdsong');

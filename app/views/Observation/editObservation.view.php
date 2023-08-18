@@ -1,5 +1,5 @@
 <section class="banner obs-banner">
-    <div class="banner-heading"><h1 class="main-heading">Observatios</h1>
+    <div class="banner-heading"><h1 class="main-heading">Observations</h1>
     <p class="sub-heading">  A bird doesn't sing becasuse it has an answer, It sings because it has a Song. Birds teach us greate life lessons. All you have to is listen to their song.</p></div>
 </section>
 <section>

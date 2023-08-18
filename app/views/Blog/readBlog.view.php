@@ -9,7 +9,7 @@
                     <hr>
                     <span class="sub-heading"><?php echo $data[0]->blogAuthor ?>, </span><span class="sub-heading"><?php echo $data[0]->date ?>, </span>
                     <img src="<?php echo ROOT ?>/images/<?php echo $data[0]->imageName ?> " alt="" class="blog-image">
-                    <p class="blogcontent"><?php echo $data[0]->blogContent ?></p> 
+        
         </div>
     </div>
 </section>
@@ -101,7 +101,4 @@ const formEvent = form.addEventListener("submit", (event) => {
   //3.
   sendMail(mail);
 });
-
-
-
 </script>

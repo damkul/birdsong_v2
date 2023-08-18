@@ -9,7 +9,7 @@
       <h2 class="page-heading">Read Observations about Birds</h2>
       <hr class="ruler" />
     </div>
-    <button class="addNewBlogBtn"><a href="./blog/getNewBlog">Add New Blog</button>
+    <button class="addNewBlogBtn" style="margin-left:90%";><a href="./blog/getNewBlog">Add New Blog</button>
         <div class="new-blog-container">
         
         <!-- <?php //if (isset($_SESSION["user"])) : ?>
@@ -31,18 +31,30 @@
           </div>
             
             <div class="blog-btn-cntnr">
-            <a href="<?php echo UPLOAD ?>/<?php echo $key->blogContent ?>" target="_blank">Read Blog</a>
+            <!--<a href="<?php echo UPLOAD ?>/<?php echo $key->blogContent ?>" target="_blank">Read Blog</a>
+            <a href="./blog/readBlog/ <?php echo $key->blogId ?>" name="id"> Readdddd</a>-->
+            <a href="./blog/readBlog/<?php echo $key->blogId ?>" name="id"> Read Blog</a>
             </div>
         </div>
         </div>
-        <?php if (isset($_SESSION["user"])) : ?>
+
+        
+        <div class="actions">
+            <button><a href="./blog/getEditBlog/<?php echo $key->blogId ?>"> edit</a></button>
+            <button><a href="./blog/deleteBlog/<?php echo $key->blogId ?>" name="id"> delete</a></button>
+        </div> 
+          
+
+
+       <!-- <?php if (isset($_SESSION["user"])) : ?>
                                 <?php if ( $_SESSION["user"]["role"] > 0) : ?>
                                   <div class="actions">
             <button><a href="./blog/getEditBlog/<?php echo $key->blogId ?>"> edit</a></button>
             <button><a href="./blog/deleteBlog/<?php echo $key->blogId ?>" name="id"> delete</a></button>
+            
           </div>
                                     <?php endif; ?>
-                            <?php endif ?>
+                            <?php endif ?> -->
          
         
     </div>

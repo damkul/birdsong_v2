@@ -14,13 +14,20 @@
             </div>
             <div class="input-container">
                 <label for="">Password</label>
-                <input type="password" class="form-input" name="password">
+                <input type="password" class="form-input" name="password" value="" placeholder="password" id="myInput"><br><br>
+
+                <input type="checkbox" onclick="myFunction()">Show Password
+                <span>
+                    <i class="fa fa-eye" id="font"></i>
+                </span>
             </div>
+
             <button class="login-btn">LOGIN</button>
             <a href="./register" class="register-text">Don't have account? Register Here!</a>
         </form>
     </div>
 </div>
+
 <section class="footer">
     <div class="footer-container">
         <div class="copyright">
@@ -81,7 +88,6 @@
         </form>
         </div>
     </div>
-   
 </section>
 
 <script>
@@ -110,6 +116,12 @@ const formEvent = form.addEventListener("submit", (event) => {
   sendMail(mail);
 });
 
-
-
+function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
 </script>

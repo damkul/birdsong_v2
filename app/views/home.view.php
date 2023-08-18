@@ -36,6 +36,7 @@
                                     <img src="<?php echo ROOT ?>/images/<?php echo $key->imageName ?>" alt="">
                                </div>
                                <div class="info">
+
                                 <h3 class="nameOfBird content-heading"><?php echo $key->birdName ?></h3>
                                 <h4 class="small-gray-text"><?php echo $key->scientificName ?></h4>
                                 <h4 class="small-gray-text"><?php echo $key->marathiName ?></h4>
@@ -57,6 +58,7 @@
                         <div class="adv">
                             <img src="<?php echo ROOT ?>/images/<?php echo $key->imageName ?> " alt="">
                         </div>
+
                      <?php endforeach; ?>
                 <?php endif; ?> 
                 <div class="big-button">
@@ -110,7 +112,10 @@
                    
                     <div class="blogs">
                         <div class="imgDiv">
-                            <img src="<?php echo ROOT ?>/images/<?php echo $key->imageName ?>" alt="">
+                            <div>
+                        <img src="public\images\logo.png" alt="Flowers in Chania">
+                </div>
+                            <img src="<?php echo ROOT ?>/public/images/logo.png<?php echo $key->imageName ?>" alt="1">
                         </div> 
                         <div class="info-cntr">
                             <h3><?php echo $key->blogName ?></h3>
@@ -179,7 +184,7 @@
             </div>
             <div class="copyright-content">
                 <h5>Website developed and managed by<br>Exec Software Solutions </h5>
-            </div>
+            </div>      
             <div class="social-media">
                 <h4>Folllow Us On</h4>
                 <div class="icon-set">

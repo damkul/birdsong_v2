@@ -1,4 +1,7 @@
 <?php
+$data='';
+$oldBlogName='';
+$newBlogName='';
 class App
 {
     private $controller = 'Home';
@@ -28,6 +31,6 @@ class App
             }
         }
         $data = (!empty($URL[3])) ? $URL[3] : [] ;
-        call_user_func_array([$controller,$this->method],[$data]);
+        call_user_func_array([$controller,$this->method],[$data,$oldBlogName,$newBlogName]);
     } 
 }

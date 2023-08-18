@@ -1,4 +1,11 @@
 <?php
+$data='';
+$oldBlogName='';
+$newBlogName='';
+$blogName='';
+$blogAuthor='';
+$blogDate='';
+$blogContent='';
 
 class Blog extends Controller{
 
@@ -8,8 +15,8 @@ class Blog extends Controller{
     //file upload 
     
 
-    public function index(){
-        $data = $this->getBlogData();
+    public function index($data,$oldBlogName,$newBlogName){
+        $data = $this->getBlogData($data,$oldBlogName,$newBlogName);
         $this->view('Blog/blog',$data);
 
      }
@@ -26,7 +33,7 @@ class Blog extends Controller{
       public function getNewBlog(){
         $this->view('Blog/newBlog');
       }
-      public function postNewBlog(){
+      public function postNewBlog($data,$oldBlogName,$newBlogName){
         $data['blogName']=$_POST['blogName'];
         $data['blogAuthor']=$_POST['blogAuthor'];
         $data['blogContent']= $_FILES['content-file']['name'];
@@ -39,7 +46,7 @@ class Blog extends Controller{
         //Insert blog content
 
         $this->uploadSingleFile($_FILES);
-        $this->index();
+        $this->index($data,$oldBlogName,$newBlogName);
       }
       public function deleteBlog($id){
         //TODO: delete record from foreign key tables 
@@ -52,9 +59,10 @@ class Blog extends Controller{
         $result = $this->where($blog);
         print_r($result);
         $this->view('Blog/readBlog',$result);
+        $this->view('readBlog/',$result);
       }
 
-      public function getBlogData(){
+      public function getBlogData($data,$oldBlogName,$newBlogName){
         $query = [];
         $query['getAllBlogs'] = "select blog.blogId,blogName,blogAuthor,date,blogContent,bi.imageName,bs.soundName
         from blog blog
@@ -62,20 +70,23 @@ class Blog extends Controller{
         left join blogsounds bs on blog.blogId = bs.blogId
         order by blogName;";
        $result = $this->executeCustomQuery($query);
-       $res = $this->sortBlogData($result);
+       $res = $this->sortBlogData($data,$oldBlogName,$newBlogName);
        return $result;
      }
-     public function sortBlogData($data){
+     public function sortBlogData($data,$oldBlogName,$newBlogName){
       $oldBlogName;
       $newBlogName;
       $images = [];
       $sounds = [];
+      $soundName=[''];
+      
       $length = count($data)-1;
       $blogs = [];
       for ($index = 0; $index < count($data); $index++) {
         $newBlogName = $data[$index]->blogName;
         $blog = [];
         if ($index == 0 || $oldBlogName == $newBlogName) {
+          $imageName=[];
           array_push($images,$data[$index]->imageName);
           array_push($sounds,$data[$index]->soundName);
 
@@ -97,9 +108,18 @@ class Blog extends Controller{
           
         }
         $oldBlogName = $newBlogName;
+        if(isset($_POST["blogContent"])){
+
+          $blogContent = $_POST["blogContent"];
+          
+          echo $blogContent[0];
+          
+          }
+          
+          
         if ($index == $length) {
           $blog=[];
-
+          
           $blog["blogId"] = $data[$index]->blogId;
           $blog["blogName"] = $data[$index]->blogName;
           $blog["blogAuthor"] = $data[$index]->blogAuthor;
@@ -140,7 +160,4 @@ class Blog extends Controller{
       $this->customInsert($sounds,$soundTable);
     }
   }
-
-  
-
 }

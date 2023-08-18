@@ -3462,5 +3462,14 @@
     .sound{
       width:48%;
     }
+
+    .containerrr{
+      position:relative;
+      width:50px;
+      margin:150px auto;
+    }
+    input{
+      box-sizing:border-box;
+
+    }
   }
-  

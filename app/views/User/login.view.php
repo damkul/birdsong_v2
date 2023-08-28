@@ -14,7 +14,7 @@
             </div>
             <div class="input-container">
                 <label for="">Password</label>
-                <input type="password" class="form-input" name="password" value="" placeholder="password" id="myInput"><br><br>
+                <input type="password" class="form-input" name="password" value="" id="myInput"><br><br>
 
                 <input type="checkbox" onclick="myFunction()">Show Password
                 <span>

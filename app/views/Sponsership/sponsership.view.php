@@ -1,3 +1,7 @@
+<?php
+$isLoggedIn = isset($_SESSION['user']);
+?>
+
 <section class="banner">
     <div class="banner-heading"><h1 class="main-heading">Sponsership</h1>
     <p class="sub-heading">Birds are indicators of the environment. If they are in trouble, we know we'll soon be in trouble. Let's save them.</p></div>
@@ -8,22 +12,37 @@
             <h2 class="page-heading">All Sponserships</h2>
             <hr class="ruler">
         </div>
+        
         <?php if (isset($_SESSION["user"])) : ?>
-            <div class="addAdvBtnCntr"><button class="addAdvBtn"><a href="./sponsership/getNewSponsership">Add Sponsership</a> </button></div>
+        <div class="addAdvBtnCntr">
+            <button class="addAdvBtn"><a href="./sponsership/getNewSponsership">Add Sponsership</a> </button><br><br>
+                 
+        </div>
+
          <?php endif; ?> 
         <div><?php $error; ?><?php $success; ?></div>
+
         <div class="main-adv-container">
         <?php if(!empty($data)): ?> 
                 <?php foreach($data as $key): ?>
-                    
+                   
                     <div class="adv">
                         <h4 class="adv-name"><?php echo $key->advName ?></h4>
                         <a href = "<?php echo $key->websiteLink ?>" class="advFor"><?php echo $key->websiteLink ?></a>
                         <p class="date">Sponsership Till<?php echo $key->toDate ?> </p> 
+                        <div class="actions">
+
+<?php if ($isLoggedIn): ?>
+  <button id="editbutton"><a href="./sponsership/getEditSponsership/ <?php echo $key->advId ?>">Edit</a></button>
+  <button id="deletebutton"><a href="./sponsership/deleteSponsership/ <?php echo $key->advId ?>">Delete</a></button>
+<?php else: ?>
+<?php endif; ?>
+</div>
+
                         <?php if (isset($_SESSION["user"])) : ?>
                                 <?php if ( $_SESSION["user"]["role"] > 0) : ?>
                                   <div class="actions">
-                                  <span class="adv-btn adv-edit-btn"><a href="./sponsership/getEditSponsership/<?php echo $key->advId ?>">Edit</a></span>
+                                  <button class="adv-btn adv-edit-btn"><a href="./sponsership/getEditSponsership/<?php echo $key->advId ?>">Edit</a></button>
                             <span class="adv-btn adv-delete-btn"><a href="./sponsership/deleteSponsership/<?php echo $key->advId ?>">Delete</a></span>
           </div>
                                     <?php endif; ?>

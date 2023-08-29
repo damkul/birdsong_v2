@@ -1,9 +1,14 @@
+<?php
+$isLoggedIn = isset($_SESSION['user']);
+?>
+
 <link rel="stylesheet" href="<?php echo ROOT?>/css/style.css">
 <section class="banner blog-banner">
   <div class="banner-heading"><h1 class="main-heading">Blogs</h1>
   <p class="sub-heading">No bird can fly without opening its wings, and no one can love without exposing their hearts. Let your heart expose its love via PEN.</p></div>
 </section>
 <section id="blogs">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <div class="container">
     <div class="page-heading-container">
       <h2 class="page-heading">Read Observations about Birds</h2>
@@ -37,24 +42,15 @@
             </div>
         </div>
         </div>
-
-        
+       
         <div class="actions">
-            <button><a href="./blog/getEditBlog/<?php echo $key->blogId ?>"> edit</a></button>
-            <button><a href="./blog/deleteBlog/<?php echo $key->blogId ?>" name="id"> delete</a></button>
-        </div> 
-          
 
-
-       <!-- <?php if (isset($_SESSION["user"])) : ?>
-                                <?php if ( $_SESSION["user"]["role"] > 0) : ?>
-                                  <div class="actions">
-            <button><a href="./blog/getEditBlog/<?php echo $key->blogId ?>"> edit</a></button>
-            <button><a href="./blog/deleteBlog/<?php echo $key->blogId ?>" name="id"> delete</a></button>
-            
-          </div>
-                                    <?php endif; ?>
-                            <?php endif ?> -->
+        <?php if ($isLoggedIn): ?>
+            <button id="editbutton"><a href="./blog/getEditBlog/ <?php echo $key->blogId ?>"> edit</a></button>
+            <button id="deletebutton"><a href="./blog/deleteBlog/<?php echo $key->blogId ?>" name="id"> delete</a></button>
+            <?php else: ?>
+  <?php endif; ?>
+        </div>
          
         
     </div>
@@ -154,7 +150,4 @@ const formEvent = form.addEventListener("submit", (event) => {
   //3.
   sendMail(mail);
 });
-
-
-
 </script>

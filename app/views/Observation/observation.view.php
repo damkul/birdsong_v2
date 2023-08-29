@@ -1,5 +1,5 @@
 <section class="banner obs-banner">
-    <div class="banner-heading"><h1 class="main-heading">Observatios</h1>
+    <div class="banner-heading"><h1 class="main-heading">Observations</h1>
     <p class="sub-heading">  A bird doesn't sing becasuse it has an answer, It sings because it has a Song. Birds teach us greate life lessons. All you have to is listen to their song.</p></div>
 </section>
 <section id="observations">
@@ -39,10 +39,13 @@
                         <?php if(!empty($data)): ?>
                             <?php for ($i=0; $i < (count($data) -1) ; $i++): ?> 
                                 <div class="obs">
+                                    <!--<div class="obs-img">
+                                        <img src="<?php echo ROOT ?>/images/<?php $data[$i]->imageName ?>" alt="">
+                                    </div>-->
                                     <div class="obs-img">
-                                        <img src="<?php echo ROOT ?>/images/<?php $data[$i]->imageName ?> " alt"">
+                                        <img src="/images/" alt="">
                                     </div>
-                                    <div class"obs-info">
+                                    <div class="obs-info">
                                         <a href="./observation/readObservation/<?php echo $data[$i]->obsid ?>"><h4><?php echo $data[$i]->birdName ?></h4></a>
                                         <p><?php echo $data[$i]->description ?></p>
                                     </div>

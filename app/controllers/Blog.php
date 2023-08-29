@@ -47,6 +47,7 @@ class Blog extends Controller{
 
         $this->uploadSingleFile($_FILES);
         $this->index($data,$oldBlogName,$newBlogName);
+        echo('postNewBlog');
       }
       public function deleteBlog($id){
         //TODO: delete record from foreign key tables 
@@ -78,8 +79,7 @@ class Blog extends Controller{
       $newBlogName;
       $images = [];
       $sounds = [];
-      $soundName=[''];
-      
+      $soundName=[];
       $length = count($data)-1;
       $blogs = [];
       for ($index = 0; $index < count($data); $index++) {

@@ -6,6 +6,7 @@ trait Model {
     protected $offset = 0;
 
     public function findAll(){
+        $data='';
         $query = "select * from $this->table limit $this->limit offset $this->offset";
         return $this->query($query,$data);
     }

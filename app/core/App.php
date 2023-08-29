@@ -13,6 +13,8 @@ class App
     }
     
     public function loadController(){
+        $oldBlogName='';
+        $newBlogName='';
         $URL = $this->splitURL();
         $filename= "./app/controllers/".ucfirst($URL[1]).".php";
         if (file_exists($filename)) {

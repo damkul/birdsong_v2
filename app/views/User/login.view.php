@@ -29,7 +29,8 @@
 </div>
 
 <section class="footer">
-    <div class="footer-container">
+
+<div class="footer-container">
         <div class="copyright">
             <div class="ft-logo">
                 <img src="<?php echo ROOT ?>/images/Birdsong_yellow_small-removebg-preview.png" alt="">

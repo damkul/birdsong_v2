@@ -41,12 +41,14 @@ class Observation extends Controller {
         $this->getNewObservation();
       }
       public function deleteObservation($id){
+        $blog='';
         $obs['obsId'] = $id;
         $result = $this->delete($blog,'blogId');
         $this->view('Observation/blog');
       }
       public function readObservation($id){
         $obs['obsId'] = $id;
+        $obs['imageName']=$id;
         $result = $this->where($obs);
         $this->view('Observation/observationDetails',$result);
       }

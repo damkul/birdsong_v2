@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 class User extends Controller{
     use Model;
     use Helper;
@@ -54,7 +53,18 @@ class User extends Controller{
               // session_regenerate_id();
                $_SESSION["user"] = $user;
                header("location: ../home");
-               exit;
+
+               /*if(user == true)
+               {
+                 $("#editbutton").show();
+                 $("#deletebutton").show();
+                 //document.getElementById("user").innerHTML=user.displayName;
+                 //$("#user").hide();
+               }
+               else{ 
+                 alert("Successfull");
+               } 
+               exit; */
             }              
          }
       }

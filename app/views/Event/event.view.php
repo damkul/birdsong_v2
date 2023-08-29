@@ -1,3 +1,6 @@
+<?php
+$isLoggedIn = isset($_SESSION['user']);
+?>
 <section class="banner event-banner">
     <div class="banner-heading"><h1 class="main-heading">Events</h1>
     <p class="sub-heading">Earth and sky, woods and fields, lakes and rivers are excellent schoolmasters and teach us more than we ever learn from books
@@ -37,6 +40,9 @@
                                 <span class="date-format">Date: <?php echo date('d/m/Y',strtotime($key->fromDate)) ?> To <?php echo date('d/m/Y',strtotime($key->toDate)) ?></span>
                                 <a href="<?php echo UPLOAD ?>/<?php echo $key->eventDescription ?>" target="_blank">Get Event Details</a>
                             </div>
+
+         
+                            
                             <?php if (isset($_SESSION["user"])) : ?>
                                 <?php if ( $_SESSION["user"]["role"] > 0) : ?>
                                     <div class="event-btn-cntr">
@@ -76,8 +82,12 @@
                         <td><?php echo "1"?></td>                   
                         <td><?php echo $key->eventName ?></td>
                         <td><?php echo $key->toDate ?> </td>
+                    
+                <?php if ($isLoggedIn): ?>
                         <td class="last-col" id="lastCol"><a class="done-links" href="./event/getEditEvent/<?php echo $key->eventId ?>">View/Edit</a> 
                         <a class="done-links" href="./event/deleteEvent/<?php echo $key->eventId ?>">Delete</a></td>
+                        <?php else: ?>
+                <?php endif; ?>
                     </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>     

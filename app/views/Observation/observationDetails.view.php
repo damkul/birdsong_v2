@@ -1,5 +1,9 @@
+<?php
+$isLoggedIn = isset($_SESSION['user']);
+?>
+
 <section class="banner obs-banner">
-    <div class="banner-heading"><h1 class="main-heading">Observatios</h1>
+    <div class="banner-heading"><h1 class="main-heading">Observations</h1>
     <p class="sub-heading">  A bird doesn't sing becasuse it has an answer, It sings because it has a Song. Birds teach us greate life lessons. All you have to is listen to their song.</p></div>
 </section>
 <section id="observations">
@@ -13,12 +17,20 @@
                                 <div class="obs-name">
                                     <h2><?php echo $data[0]->birdName ?></h2>
                                     <p>scientific name</p>
+                                <div class="actions">
+                                <?php if ($isLoggedIn): ?>
+                                   <button id="edit"><a href="./Observation/getEditObservation/"> Edit</a></button>
+                                   <button id="delete"><a href="./Observation/deleteObservation/"> Delete</a></button>
+                                <?php else: ?>
+                                <?php endif; ?>
+                              </div>
                                 </div>
+                                
                                 <?php if (isset($_SESSION["user"])) : ?>
                                 <?php if ( $_SESSION["user"]["role"] > 0) : ?>
                                     <div class="edit-obs">
                                         <a class="link" href="../getEditObservation/<?php echo $data[0]->obsId ?>">Edit</a>
-                                        <a class="link del" href=../deleteObservation/<?php echo $data[0]->obsId ?>">Delete</a>
+                                        <a class="link del" href="../deleteObservation/<?php echo $data[0]->obsId ?>">Delete</a>
                                     </div>
                                     <?php endif; ?>
                             <?php endif ?>
@@ -62,7 +74,7 @@
                     <?php if(!empty($data[0]->sounds)): ?>
                         <?php foreach($data[0]->sounds as $key): ?>
                             <div class="small-obs-sound">
-                                <audio src="/sounds/<?php echo $key   ?> " controls></audio>
+                                <audio src="/sounds/<?php echo $key?>" controls></audio>
                             </div>
                      <?php endforeach; ?>
                     <?php endif; ?> 

@@ -86,19 +86,33 @@
         <div class="members-table-container">
             <table class="members">
                 <tr>
-                  <th>Sr. No.</th>
+                  
+                  <th>MemId</th>
+                  <th>Timestamp</th>
+                  <th>Type Of Membership</th>
                   <th>Name</th>
-                  <th>Profession</th>
-                  <th>Package</th>
+                  <th>Names Of Your Family Or Group</th>
+                  <th>Date Of Birth</th>
+                  <th>Postal Address</th>
+                  <th>E-mail Id</th>
+                  <th>What's App No.</th>
+                  <th>Amount</th>
                 </tr>
                 <?php if (!empty($data)): ?>
                     
                     <?php foreach($data as $key): ?>
                         <tr>
-                            <td>1</td>
-                            <td><?php echo $key->memName ?></td>
-                            <td><?php echo $key->memOccupation ?></td>
-                            <td><?php echo $key->memType ?></td>
+                            
+                            <td><?php echo $key->memId ?></td>
+                            <td><?php echo $key->Timestamp ?></td>
+                            <td><?php echo $key->TypeOfMembership ?></td>
+                            <td><?php echo $key->Name ?></td>
+                            <td><?php echo $key->NamesOfYourFamilyOrGroup ?></td>
+                            <td><?php echo $key->DateOfBirth ?></td>
+                            <td><?php echo $key->PostalAddress ?></td>
+                            <td><?php echo $key->mailId ?></td>
+                            <td><?php echo $key->WhatsAppNo?></td>
+                            <td><?php echo $key->Amount ?></td>
                           </tr>
                     <?php endforeach; ?>
                 <?php endif ?>

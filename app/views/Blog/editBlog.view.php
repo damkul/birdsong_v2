@@ -22,7 +22,7 @@
                     <div class="modal-input-container ">
                       <label for="">Date</label>
                       <input type="Date" class="form-input newBlogDate" name="date" id="date" value="<?php echo date('Y-m-d',strtotime($data[0]->date)) ?>">
-                  </div>
+                    </div>
                     </div>
                     <div class="modal-input-container ">
                       <label for="">Blog Content</label>

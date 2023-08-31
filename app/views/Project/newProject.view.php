@@ -7,7 +7,7 @@
         <h2>New Project</h2>
     <hr class="new-blog-hr">
     <div class="new-blog-form-container"> 
-      <% if (success.length>0) { %>
+      <!-- <% if (success.length>0) { %>
         <div class="success">
           <%= success %>
         </div>
@@ -16,7 +16,7 @@
         <div class="error">
           <%= error %>
         </div>
-      <% } %>
+      <% } %> -->
         <form action="postNewProject" method="post" enctype="multipart/form-data">
         
               <div class="modal-input-container">

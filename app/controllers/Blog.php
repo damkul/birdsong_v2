@@ -58,7 +58,7 @@ class Blog extends Controller{
       public function readBlog($id){
         $blog['blogId'] = $id;
         $result = $this->where($blog);
-        print_r($result);
+       // print_r($result);
         $this->view('Blog/readBlog',$result);
         $this->view('readBlog/',$result);
       }

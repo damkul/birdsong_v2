@@ -24,13 +24,13 @@ $isLoggedIn = isset($_SESSION['user']);
             <?php if(!empty($data)): ?>
                 <?php foreach($data['upcomingEvents'] as $key): ?>
                         <div class="events main-evnt">
-                            <div class="img-cntr">
-                                <?php 
+                           <!-- <div class="img-cntr">
+                                 <?php 
                                     if ($key->imageName=="NULL") {
                                         $key->imageName = 'logo_0.5.png';
                                     } 
-                                    ?>   
-                               </div> 
+                                    ?>  
+                               </div> -->
                             <!-- <img class="evn-img" src="<?php //echo ROOT ?>/images/Birdsong_logo_0.75x.png" alt=""></div> -->
                         <div class="event-body-cntr">
                             <div class="info-cntr">
@@ -54,7 +54,7 @@ $isLoggedIn = isset($_SESSION['user']);
                         </div>
                         
                         <div class="register-btn">
-                            <!-- <a href="/events/registerForEvent/<?php//= //$key->eventId +"+"+ $key->eventFee ?>">Register</a> -->
+                            <!-- <a href="/events/registerForEvent/<?php //= //$key->eventId +"+"+ $key->eventFee ?>">Register</a> -->
                             <a href="<?php echo UPLOAD?>/<?php echo $key->eventDescription?>" class="event-text" target="_blank">Get Details</a>
                         </div>
                     </div>

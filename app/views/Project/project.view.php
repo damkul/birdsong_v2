@@ -8,7 +8,7 @@
             <h2 class="page-heading">All Projects</h2>
             <hr class="ruler">
         </div>
-        <button><a href="./project/getNewProject">New Project</a></button>
+        
         <?php if (isset($_SESSION["user"])) : ?>
             <div class="new-project-container">
                 <button><a href="./project/getNewProject">New Project</a></button>

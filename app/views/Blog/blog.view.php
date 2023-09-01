@@ -15,7 +15,11 @@ $isLoggedIn = isset($_SESSION['user']);
       <hr class="ruler" />
     </div>
       <div class="new-blog-btn">
-        <button class="addNewBlogBtn"><a href="./blog/getNewBlog">Add New Blog</button>
+           <?php if ($isLoggedIn): ?>
+            <button class="addNewBlogBtn"><a href="./blog/getNewBlog">Add New Blog</button>
+            <?php else: ?>
+            <?php endif; ?>
+        
       </div>
         <div class="new-blog-container">
         
@@ -36,8 +40,8 @@ $isLoggedIn = isset($_SESSION['user']);
             <p class="small-gray-text"><?php echo $key->blogAuthor ?> , <?php echo date('d/m/Y',strtotime($key->date)) ?></p>
             <audio src="/sounds/<?php $key->soundName ?> "></audio>
           </div>
-            
-            <div class="new-blog-btn">
+          
+          <div class="new-blog-btn">
             <button class="addNewBlogBtn"> <a href="./blog/readBlog/<?php echo $key->blogId ?>" name="id"> Read Blog</a></button>
             </div>
         </div>

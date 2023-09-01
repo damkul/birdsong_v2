@@ -12,10 +12,11 @@ $isLoggedIn = isset($_SESSION['user']);
             <h2 class="page-heading">All Events</h2>
             <hr class="ruler">
         </div>
+       
         <div class="new-blog-btn">
-        <button class="addNewBlogBtn"><a href="./event/getNewEvent">Add New Event</a></button>
-        <?php if (isset($_SESSION["user"])) : ?>
+        <?php if ($isLoggedIn): ?>
                 <button class="addNewBlogBtn"><a href="./event/getNewEvent">Add New Event</a></button>
+                <?php else: ?>
                 <?php endif; ?>
               </div>
             <div>
@@ -82,13 +83,16 @@ $isLoggedIn = isset($_SESSION['user']);
                         <td><?php echo "1"?></td>                   
                         <td><?php echo $key->eventName ?></td>
                         <td><?php echo $key->toDate ?> </td>
-                        <td> </td>
-                    
-                <?php if ($isLoggedIn): ?>
-                        <td class="last-col" id="lastCol"><a class="done-links" href="./event/getEditEvent/<?php echo $key->eventId ?>">View/Edit</a> 
-                        <a class="done-links" href="./event/deleteEvent/<?php echo $key->eventId ?>">Delete</a></td>
+                       <td>
+                       <?php if ($isLoggedIn): ?>
+                        <a class="done-links" href="./event/getEditEvent/<?php echo $key->eventId ?>">View/Edit</a> 
+                        <a class="done-links" href="./event/deleteEvent/<?php echo $key->eventId ?>">Delete</a>
                         <?php else: ?>
                 <?php endif; ?>
+                       </td>
+                    
+        
+                
                     </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>     

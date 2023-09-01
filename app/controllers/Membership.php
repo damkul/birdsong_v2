@@ -43,7 +43,7 @@ class Membership extends Controller{
         $this->view('Membership/readMembership',$result);
       }
       public function getExistingMembers(){
-        $query['getExistingMembers'] = "SELECT memId,Timestamp,TypeOfMembership,Name,NamesOfYourFamilyOrGroup,DateOfBirth,PostalAddress,mailId,WhatsAppNo,Amount FROM membership";
+        $query['getExistingMembers'] = "SELECT memId,TypeOfMembership,Name,NamesOfYourFamilyOrGroup,mailId,WhatsAppNo FROM membership";
         $result = $this->executeCustomQuery($query);
         return $result;
       }

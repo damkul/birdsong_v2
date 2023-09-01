@@ -14,7 +14,9 @@ $isLoggedIn = isset($_SESSION['user']);
       <h2 class="page-heading">Read Observations about Birds</h2>
       <hr class="ruler" />
     </div>
-    <button class="addNewBlogBtn" style="margin-left:90%";><a href="./blog/getNewBlog">Add New Blog</button>
+      <div class="new-blog-btn">
+        <button class="addNewBlogBtn"><a href="./blog/getNewBlog">Add New Blog</button>
+      </div>
         <div class="new-blog-container">
         
         <!-- <?php //if (isset($_SESSION["user"])) : ?>
@@ -35,10 +37,8 @@ $isLoggedIn = isset($_SESSION['user']);
             <audio src="/sounds/<?php $key->soundName ?> "></audio>
           </div>
             
-            <div class="blog-btn-cntnr">
-            <!--<a href="<?php echo UPLOAD ?>/<?php echo $key->blogContent ?>" target="_blank">Read Blog</a>
-            <a href="./blog/readBlog/ <?php echo $key->blogId ?>" name="id"> Readdddd</a>-->
-            <a href="./blog/readBlog/<?php echo $key->blogId ?>" name="id"> Read Blog</a>
+            <div class="new-blog-btn">
+            <button class="addNewBlogBtn"> <a href="./blog/readBlog/<?php echo $key->blogId ?>" name="id"> Read Blog</a></button>
             </div>
         </div>
         </div>

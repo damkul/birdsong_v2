@@ -88,15 +88,12 @@
                 <tr>
                   
                   <th>MemId</th>
-                  <th>Timestamp</th>
                   <th>Type Of Membership</th>
                   <th>Name</th>
                   <th>Names Of Your Family Or Group</th>
-                  <th>Date Of Birth</th>
-                  <th>Postal Address</th>
                   <th>E-mail Id</th>
                   <th>What's App No.</th>
-                  <th>Amount</th>
+                  
                 </tr>
                 <?php if (!empty($data)): ?>
                     
@@ -104,19 +101,75 @@
                         <tr>
                             
                             <td><?php echo $key->memId ?></td>
-                            <td><?php echo $key->Timestamp ?></td>
                             <td><?php echo $key->TypeOfMembership ?></td>
                             <td><?php echo $key->Name ?></td>
                             <td><?php echo $key->NamesOfYourFamilyOrGroup ?></td>
-                            <td><?php echo $key->DateOfBirth ?></td>
-                            <td><?php echo $key->PostalAddress ?></td>
                             <td><?php echo $key->mailId ?></td>
                             <td><?php echo $key->WhatsAppNo?></td>
-                            <td><?php echo $key->Amount ?></td>
+                           
                           </tr>
                     <?php endforeach; ?>
                 <?php endif ?>
               </table>
+              <?php
+// Database connection setup
+$servername = "localhost";
+$username = "user";
+$password = " ";
+$dbname = "birdsong";
+
+$conn = new mysqli("localhost", "user", " ", "birdsong");
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Pagination configuration
+$records_per_page = 5; // Number of records to display per page
+
+// Get the current page number from the URL
+if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = 1;
+}
+
+// Calculate the starting and ending row numbers for the current page
+$start_row = ($page - 1) * $records_per_page;
+
+// Modify your SQL query to retrieve only the rows for the current page
+$sql = "SELECT * FROM membership LIMIT $start_row, $records_per_page";
+$result = $conn->query($sql);
+
+// Display the table header
+echo "<table>";
+
+echo "<tr><th>MemId</th><th>Type Of Membership</th><th>Name</th><th>Names Of Your Family Or Group</th><th>E-mail Id</th><th>What's App No.</th></tr>";
+
+// Display the data
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+       
+        echo "<tr><td>" . $row['memId'] . "</td><td>" . $row['TypeOfMembership'] . "</td><td>" . $row['Name'] . "</td><td>" . $row['NamesOfYourFamilyOrGroup'] . "</td><td>" . $row['mailId'] . "</td><td>" . $row['WhatsAppNo'] . "</td></tr>";
+    }
+    echo "</table>";
+} else {
+    echo "No records found.";
+}
+
+// Pagination links
+$total_records = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM membership"));
+$total_pages = ceil($total_records / $records_per_page);
+
+echo "<div class='pagination'>";
+for ($i = 1; $i <= $total_pages; $i++) {
+    echo "<a href='?page=$i'>$i</a> ";
+}
+echo "</div>";
+
+// Close the database connection
+$conn->close();
+?>
         </div>
     </div>
 

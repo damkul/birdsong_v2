@@ -26,7 +26,7 @@ class Event extends Controller
           $this->view('Event/newEvent');
         }
         public function postNewEvent(){
-          print_r($_POST);
+          //print_r($_POST);
           $data['eventName']=$_POST['eventName'];
           $data['eventFee']=$_POST['eventFee'];
           $data['eventType']=$_POST['eventType'];

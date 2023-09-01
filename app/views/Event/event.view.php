@@ -82,6 +82,7 @@ $isLoggedIn = isset($_SESSION['user']);
                         <td><?php echo "1"?></td>                   
                         <td><?php echo $key->eventName ?></td>
                         <td><?php echo $key->toDate ?> </td>
+                        <td> </td>
                     
                 <?php if ($isLoggedIn): ?>
                         <td class="last-col" id="lastCol"><a class="done-links" href="./event/getEditEvent/<?php echo $key->eventId ?>">View/Edit</a> 
